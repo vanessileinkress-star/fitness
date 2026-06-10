@@ -1,0 +1,66 @@
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --accent-color: #00ecbc;
+    --card-bg: #1e1e1e;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, #1e1e1e 0%, #121212 100%);
+}
+
+header h1 {
+    color: var(--accent-color);
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.story-section {
+    display: flex;
+    min-height: 80vh;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+/* Dreht die Richtung bei jedem zweiten Bereich um für mehr Dynamik */
+.story-section:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.story-text {
+    flex: 1;
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.story-text h2 {
+    color: var(--accent-color);
+}
+
+.story-visual {
+    flex: 1;
+    max-width: 600px;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.privacy-note {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 1.5rem;
+    font-style: italic;
+}
