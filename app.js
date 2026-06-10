@@ -1,58 +1,84 @@
-// 1. SCHLAF-CHART (Morgen-Sektion)
-const ctxSleep = document.getElementById('sleepChart').getContext('2d');
-const sleepChart = new Chart(ctxSleep, {
-    type: 'bar',
-    data: {
-        labels: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
-        datasets: [{
-            label: 'Schlafzeit (Stunden)',
-            data: [6.5, 7.2, 5.8, 8.0, 6.2, 8.5, 7.8], // Dummy-Daten
-            backgroundColor: '#00ecbc',
-            borderRadius: 5
-        }, {
-            label: 'WHO Empfehlung',
-            data: [7, 7, 7, 7, 7, 7, 7], // Benchmark
-            type: 'line',
-            borderColor: '#ff5252',
-            borderDash: [5, 5],
-            fill: false
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { labels: { color: '#fff' } }
-        },
-        scales: {
-            y: { ticks: { color: '#fff' }, grid: { color: '#2a2a2a' } },
-            x: { ticks: { color: '#fff' }, grid: { color: '#2a2a2a' } }
-        }
-    }
-});
+// Globale Chart-Konfiguration für weiße Schrift
+Chart.defaults.color = '#ffffff';
 
-// 2. SCHRITTE-CHART (Mittags-Sektion)
-const ctxSteps = document.getElementById('stepsChart').getContext('2d');
-const stepsChart = new Chart(ctxSteps, {
-    type: 'line',
-    data: {
-        labels: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
-        datasets: [{
-            label: 'Schritte',
-            data: [8400, 10200, 6100, 11000, 7500, 13000, 9000], // Dummy-Daten
-            borderColor: '#00b4d8',
-            backgroundColor: 'rgba(0, 180, 216, 0.1)',
-            fill: true,
-            tension: 0.3
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { labels: { color: '#fff' } }
+// Wir laden die von Python generierte JSON-Datei
+fetch('clean_sleep.json')
+    .then(response => response.json())
+    .then(data => {
+        renderCharts(data);
+    })
+    .catch(error => {
+        console.error("Fehler beim Laden der echten Garmin-Daten:", error);
+        // Fallback: Dummy-Daten anzeigen, falls Datei (noch) nicht da ist
+        const fallbackData = {
+            labels: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+            sleep_hours: [6.2, 6.8, 5.9, 7.1, 6.0, 8.5, 8.0],
+            recovery_score: [78, 65, 66, 73, 63, 96, 77]
+        };
+        renderCharts(fallbackData);
+    });
+
+function renderCharts(data) {
+    // 1. DYNAMISCHER SCHLAF-CHART (Deine echten Daten!)
+    const ctxSleep = document.getElementById('sleepChart').getContext('2d');
+    new Chart(ctxSleep, {
+        type: 'bar',
+        data: {
+            labels: data.labels,
+            datasets: [{
+                label: 'Deine Schlafdauer (Std.)',
+                data: data.sleep_hours,
+                backgroundColor: '#3c3486', 
+                borderRadius: 8
+            }, {
+                label: 'WHO-Minimum (7 Std.)',
+                data: Array(data.labels.length).fill(7),
+                type: 'line',
+                borderColor: '#ff4d4d', 
+                borderWidth: 3,
+                borderDash: [5, 5],
+                fill: false
+            }]
         },
-        scales: {
-            y: { ticks: { color: '#fff' }, grid: { color: '#2a2a2a' } },
-            x: { ticks: { color: '#fff' }, grid: { color: '#2a2a2a' } }
+        options: {
+            responsive: true,
+            scales: {
+                y: { grid: { color: 'rgba(255,255,255,0.1)' }, min: 0, max: 12 },
+                x: { grid: { display: false } }
+            }
         }
-    }
-});
+    });
+
+    // 2. ERHOLUNGS-CHART (Wie gut lädst du deine Batterien wieder auf?)
+    const ctxRecovery = document.getElementById('recoveryChart').getContext('2d');
+    new Chart(ctxRecovery, {
+        type: 'line',
+        data: {
+            labels: data.labels,
+            datasets: [{
+                label: 'Garmin Recovery Score',
+                data: data.recovery_score,
+                borderColor: '#426e92',
+                backgroundColor: 'rgba(66, 110, 146, 0.4)',
+                fill: true,
+                tension: 0.4,
+                borderWidth: 3
+            }, {
+                label: 'Kritische Grenze (50)',
+                data: Array(data.labels.length).fill(50),
+                borderColor: '#ff4d4d',
+                borderWidth: 2,
+                borderDash: [3, 3],
+                pointRadius: 0,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { grid: { color: 'rgba(255,255,255,0.1)' }, min: 0, max: 100 },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+}
