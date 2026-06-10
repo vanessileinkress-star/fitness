@@ -3,95 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aktivitätsübersicht | April 2026</title>
+    <title>Health Overview | April 2026</title>
+
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-<header>
-    <h1>Aktivitätsübersicht April 2026</h1>
-    <p>Analyse von Schlaf, Belastung, Bewegung und Trainingsaktivität (14.04.–20.04.2026).</p>
+<header class="topbar">
+    <h1>Health Overview</h1>
+    <p>April 14–20, 2026 · Activity & Recovery Analytics</p>
 </header>
 
-<main>
+<main class="container">
 
-    <section class="story-section">
-        <div class="story-text">
-            <h2>🛌 Schlaf & Regeneration</h2>
-            <p>
-                Die Schlafdauer lag überwiegend im empfohlenen Bereich.
-                Die Werte zeigen eine stabile Grundlage für Regeneration und Leistungsfähigkeit.
-            </p>
+    <section class="card">
+        <div class="card-text">
+            <h2>Sleep</h2>
+            <p class="sub">Recovery & duration trends</p>
 
-            <div class="who-box">
-                <strong>Referenz:</strong> 7–9 Stunden Schlaf pro Nacht werden empfohlen.
-            </div>
-
-            <div class="motivation-box">
-                <strong>Status:</strong> Schlaf im stabilen Bereich.
+            <div class="kpi">
+                <div>
+                    <span class="label">Average</span>
+                    <span class="value">8.2 h</span>
+                </div>
+                <div>
+                    <span class="label">Status</span>
+                    <span class="value good">Optimal</span>
+                </div>
             </div>
         </div>
-        <div class="story-visual">
-            <canvas id="sleepChart"></canvas>
-        </div>
+
+        <canvas id="sleepChart"></canvas>
     </section>
 
 
-    <section class="story-section">
-        <div class="story-text">
-            <h2>🫀 Belastung & Erholung</h2>
-            <p>
-                Die Belastungswerte zeigen ein überwiegend konstantes Niveau mit einzelnen Peaks bei hoher Aktivität.
-            </p>
+    <section class="card">
+        <div class="card-text">
+            <h2>Body Strain</h2>
+            <p class="sub">Load & stress response</p>
 
-            <div class="motivation-box">
-                <strong>Analyse:</strong> Belastungsspitzen sind im Trainingskontext erwartbar.
+            <div class="kpi">
+                <div>
+                    <span class="label">Peak</span>
+                    <span class="value warn">31.7</span>
+                </div>
+                <div>
+                    <span class="label">Status</span>
+                    <span class="value">Stable</span>
+                </div>
             </div>
         </div>
-        <div class="story-visual">
-            <canvas id="stressChart"></canvas>
-        </div>
+
+        <canvas id="stressChart"></canvas>
     </section>
 
 
-    <section class="story-section">
-        <div class="story-text">
-            <h2>👟 Alltagsbewegung</h2>
-            <p>
-                Die Schrittanzahl zeigt ein aktives Bewegungsverhalten mit mehreren Tagen über dem Richtwert von 10.000 Schritten.
-            </p>
+    <section class="card">
+        <div class="card-text">
+            <h2>Steps</h2>
+            <p class="sub">Daily movement volume</p>
 
-            <div class="who-box">
-                <strong>Orientierungswert:</strong> Regelmäßige Bewegung unterstützt die kardiovaskuläre Gesundheit.
+            <div class="kpi">
+                <div>
+                    <span class="label">Average</span>
+                    <span class="value">10.1k</span>
+                </div>
+                <div>
+                    <span class="label">Goal</span>
+                    <span class="value good">Met</span>
+                </div>
             </div>
         </div>
-        <div class="story-visual">
-            <canvas id="stepsChart"></canvas>
-        </div>
+
+        <canvas id="stepsChart"></canvas>
     </section>
 
 
-    <section class="story-section">
-        <div class="story-text">
-            <h2>🏋️ Trainingsverteilung</h2>
-            <p>
-                Die Trainingsaktivität verteilt sich auf Krafttraining, Ausdauer und hochintensive Einheiten.
-                Die Mischung sorgt für eine ausgewogene Belastungsstruktur.
-            </p>
-
-            <div class="who-box">
-                <strong>Orientierungswert:</strong> 150 Minuten moderate oder 75 Minuten intensive Aktivität pro Woche werden empfohlen.
-            </div>
-
-            <div class="motivation-box">
-                <strong>Status:</strong> Aktivitätsniveau im überdurchschnittlichen Bereich.
-            </div>
+    <section class="card">
+        <div class="card-text">
+            <h2>Training Mix</h2>
+            <p class="sub">Weekly activity distribution</p>
         </div>
-        <div class="story-visual">
-            <canvas id="activityChart"></canvas>
-        </div>
+
+        <canvas id="activityChart"></canvas>
     </section>
 
 </main>
