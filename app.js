@@ -1,13 +1,13 @@
 Chart.defaults.color = '#a0a0a0';
 Chart.defaults.font.family = "'Helvetica Neue', Arial, sans-serif";
 
-// Echte Daten aus deiner Woche (14.04. - 20.04.2026) aus Source 1 & 3
+// Daten April 2026
 const labelsApril = ['Di (14.)', 'Mi (15.)', 'Do (16.)', 'Fr (17.)', 'Sa (18.)', 'So (19.)', 'Mo (20.)'];
-const sleepData = [7.8, 8.4, 8.1, 8.3, 8.3, 9.0, 7.3]; // In Stunden
-const stressData = [18.7, 18.4, 22.2, 22.0, 22.2, 31.7, 16.9]; // Garmin Stress Score
-const stepsData = [8400, 11200, 7800, 9500, 14500, 12300, 8900]; // Basiert auf Aktivitätslevel
+const sleepData = [7.8, 8.4, 8.1, 8.3, 8.3, 9.0, 7.3];
+const stressData = [18.7, 18.4, 22.2, 22.0, 22.2, 31.7, 16.9];
+const stepsData = [8400, 11200, 7800, 9500, 14500, 12300, 8900];
 
-// 1. SCHLAF CHART
+// 1. SCHLAF CHART (Helles Blau)
 new Chart(document.getElementById('sleepChart').getContext('2d'), {
     type: 'bar',
     data: {
@@ -15,7 +15,7 @@ new Chart(document.getElementById('sleepChart').getContext('2d'), {
         datasets: [{
             label: 'Schlaf (Stunden)',
             data: sleepData,
-            backgroundColor: '#426e92', // Dein helles Blau
+            backgroundColor: '#426e92', 
             borderRadius: 6
         }, {
             label: 'WHO Ziel (7h)',
@@ -42,11 +42,11 @@ new Chart(document.getElementById('sleepChart').getContext('2d'), {
                 }
             }
         },
-        scales: { y: { min: 0, max: 12, grid: { color: '#222' } }, x: { grid: { display: false } } }
+        scales: { y: { min: 0, max: 12, grid: { color: '#1a1a1a' } }, x: { grid: { display: false } } }
     }
 });
 
-// 2. STRESS CHART
+// 2. STRESS CHART (Dunkles Indigo mit hellem Blau als Füllung)
 new Chart(document.getElementById('stressChart').getContext('2d'), {
     type: 'line',
     data: {
@@ -54,12 +54,15 @@ new Chart(document.getElementById('stressChart').getContext('2d'), {
         datasets: [{
             label: 'Ø Stresslevel',
             data: stressData,
-            borderColor: '#3c3486', // Dein dunkles Indigo
-            backgroundColor: 'rgba(60, 52, 134, 0.2)',
+            borderColor: '#426e92',
+            backgroundColor: 'rgba(66, 110, 146, 0.1)',
             fill: true,
             tension: 0.4,
             borderWidth: 3,
-            pointBackgroundColor: '#426e92'
+            pointBackgroundColor: '#3c3486',
+            pointBorderColor: '#426e92',
+            pointBorderWidth: 2,
+            pointRadius: 4
         }]
     },
     options: {
@@ -73,11 +76,11 @@ new Chart(document.getElementById('stressChart').getContext('2d'), {
                 }
             }
         },
-        scales: { y: { min: 0, max: 50, grid: { color: '#222' } }, x: { grid: { display: false } } }
+        scales: { y: { min: 0, max: 50, grid: { color: '#1a1a1a' } }, x: { grid: { display: false } } }
     }
 });
 
-// 3. SCHRITTE CHART
+// 3. SCHRITTE CHART (Dunkles Indigo)
 new Chart(document.getElementById('stepsChart').getContext('2d'), {
     type: 'bar',
     data: {
@@ -98,19 +101,20 @@ new Chart(document.getElementById('stepsChart').getContext('2d'), {
         }]
     },
     options: {
-        scales: { y: { grid: { color: '#222' } }, x: { grid: { display: false } } }
+        scales: { y: { grid: { color: '#1a1a1a' } }, x: { grid: { display: false } } }
     }
 });
 
-// 4. AKTIVITÄTEN CHART (Doughnut)
+// 4. AKTIVITÄTEN CHART (Doughnut mit deinen Akzentfarben)
 new Chart(document.getElementById('activityChart').getContext('2d'), {
     type: 'doughnut',
     data: {
         labels: ['Krafttraining 🏋️‍♀️', 'Gravel 🚴‍♀️', 'HIIT/Hyrox 🏃‍♀️', 'Gehen 👟'],
         datasets: [{
-            data: [45, 25, 15, 15], // Prozentuale Verteilung im April
-            backgroundColor: ['#426e92', '#3c3486', '#ffffff', '#ff4444'],
-            borderWidth: 0
+            data: [45, 25, 15, 15], 
+            backgroundColor: ['#426e92', '#3c3486', '#222222', '#ff4444'],
+            borderColor: '#000000',
+            borderWidth: 2
         }]
     },
     options: {
