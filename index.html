@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Daily Routine - Fitness Story</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Mein Tag, meine Gesundheit</h1>
+        <p>Eine interaktive Story-Auswertung meiner Fitnessdaten.</p>
+    </header>
+
+    <main>
+        <section class="story-section" id="morning">
+            <div class="story-text">
+                <h2>07:00 Uhr – Der Start in den Tag</h2>
+                <p>Wie gut habe ich geschlafen? Die WHO empfiehlt für Erwachsene 7-9 Stunden Schlaf. Mal sehen, ob ich mein Ziel erreicht habe.</p>
+                <div class="privacy-note">🔒 DSGVO-Hinweis: Diese Daten liegen nur lokal in deinem Browser.</div>
+            </div>
+            <div class="story-visual">
+                <canvas id="sleepChart"></canvas>
+            </div>
+        </section>
+
+        <section class="story-section" id="noon">
+            <div class="story-text">
+                <h2>13:00 Uhr – Die Bewegungs-Challenge</h2>
+                <p>Im Unialltag sitzen wir viel zu viel. Erreiche ich die magischen 10.000 Schritte?</p>
+            </div>
+            <div class="story-visual">
+                <canvas id="stepsChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
