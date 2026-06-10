@@ -1,9 +1,8 @@
 :root {
-    --bg-color: #000000;       /* Schwarzer Hintergrund */
-    --card-bg: #111111;        /* Sehr dunkles Grau für Kontrast */
+    --bg-color: #000000;       /* Reines Schwarz */
     --text-color: #ffffff;
-    --accent-1: #426e92;       /* Dein helleres Blau */
-    --accent-2: #3c3486;       /* Dein dunkles Indigo */
+    --accent-1: #426e92;       /* Helles Blau */
+    --accent-2: #3c3486;       /* Dunkles Indigo */
     --who-red: #ff4444;        /* Rot für WHO-Linien */
     --text-muted: #a0a0a0;
 }
@@ -20,7 +19,7 @@ body {
 header {
     text-align: center;
     padding: 5rem 2rem 3rem;
-    border-bottom: 2px solid var(--accent-2);
+    border-bottom: 1px solid var(--accent-2);
 }
 
 header h1 {
@@ -41,7 +40,7 @@ header h1 {
     padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #1a1a1a;
 }
 
 .story-section:nth-child(even) {
@@ -67,7 +66,7 @@ header h1 {
 }
 
 .who-box {
-    background: rgba(255, 68, 68, 0.1);
+    background: rgba(255, 68, 68, 0.05);
     border-left: 4px solid var(--who-red);
     padding: 1rem;
     margin-top: 1.5rem;
@@ -76,7 +75,7 @@ header h1 {
 }
 
 .motivation-box {
-    background: linear-gradient(90deg, rgba(66, 110, 146, 0.2), rgba(60, 52, 134, 0.2));
+    background: linear-gradient(90deg, rgba(66, 110, 146, 0.1), rgba(60, 52, 134, 0.1));
     border-left: 4px solid var(--accent-1);
     padding: 1rem;
     margin-top: 1rem;
@@ -86,9 +85,6 @@ header h1 {
 .story-visual {
     flex: 1;
     max-width: 600px;
-    background-color: var(--card-bg);
+    background-color: #000000; /* Grafik-Hintergrund jetzt auch schwarz */
     padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid #333;
-    box-shadow: 0 10px 30px rgba(66, 110, 146, 0.1);
 }
