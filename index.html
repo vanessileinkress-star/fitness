@@ -1,83 +1,82 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Fitness-Story | April 2026</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+<header>
+    <h1>Aktivitätsübersicht April 2026</h1>
+    <p>Analyse von Schlaf, Belastung, Bewegung und Trainingsaktivität im Zeitraum vom 14.04. bis 20.04.2026.</p>
+</header>
 
-    <header>
-        <h1>April 2026 Insights</h1>
-        <p>Daten lügen nicht. Meine Performance, meine Erholung, meine Story.</p>
-    </header>
+<main>
 
-    <main>
-        <!-- Sektion 1: Schlaf -->
-        <section class="story-section">
-            <div class="story-text">
-                <h2><span class="icon">🛌</span> 01. Schlaf & Regeneration</h2>
-                <p>Mitte April (14.04. - 20.04.) war intensiv. Schlaf ist der stärkste legale Performance-Booster. An fast allen Tagen lieferte ich über 7,5 Stunden ab!</p>
-                <div class="who-box">
-                    <strong>WHO-Richtlinie:</strong> Erwachsene benötigen 7 bis 9 Stunden hochwertigen Schlaf pro Nacht zur Zellregeneration.
-                </div>
-                <div class="motivation-box">
-                    <strong>Status:</strong> Ziel erreicht! Du bist eine Maschine im Regenerieren. Klick auf die Balken in der Grafik für Details!
-                </div>
-            </div>
-            <div class="story-visual">
-                <canvas id="sleepChart"></canvas>
-            </div>
-        </section>
+    <!-- Sektion 1: Schlaf -->
+    <section class="story-section">
+        <div class="story-text">
+            <h2><span class="icon">🛌</span> 01. Schlaf & Regeneration</h2>
+            <p>Die Schlafdauer lag im betrachteten Zeitraum überwiegend im empfohlenen Bereich. An sechs von sieben Tagen wurden mehr als sieben Stunden Schlaf erfasst. Die Werte sprechen für eine gute Grundlage zur körperlichen und mentalen Regeneration.</p>
 
-        <!-- Sektion 2: Stress -->
-        <section class="story-section">
-            <div class="story-text">
-                <h2><span class="icon">🫀</span> 02. Belastung & Stress</h2>
-                <p>Körperlicher und mentaler Stress spiegeln sich in der Herzratenvariabilität wider. Am 19. April schoss der Stresslevel auf über 31 hoch.</p>
-                <div class="motivation-box">
-                    <strong>Insight:</strong> Ein hohes Stresslevel nach harten Trainingstagen ist völlig normal. Der Körper arbeitet und passt sich an!
-                </div>
+            <div class="who-box">
+                <strong>Referenzwert:</strong> Für Erwachsene werden durchschnittlich 7 bis 9 Stunden Schlaf pro Nacht empfohlen.
             </div>
-            <div class="story-visual">
-                <canvas id="stressChart"></canvas>
-            </div>
-        </section>
 
-        <!-- Sektion 3: Alltagsbewegung -->
-        <section class="story-section">
-            <div class="story-text">
-                <h2><span class="icon">👟</span> 03. Alltags-Moves</h2>
-                <p>Zwischen Uni-Vorlesungen und Schreibtischarbeit ist ständige Bewegung das A und O, um den Stoffwechsel aktiv zu halten.</p>
-                <div class="who-box">
-                    <strong>WHO-Richtlinie:</strong> Mindestens 10.000 Schritte täglich reduzieren das Risiko für Herz-Kreislauf-Erkrankungen drastisch.
-                </div>
+            <div class="motivation-box">
+                <strong>Status:</strong> Schlafziel erreicht. Die Schlafdauer lag an den meisten Tagen innerhalb des empfohlenen Bereichs.
             </div>
-            <div class="story-visual">
-                <canvas id="stepsChart"></canvas>
-            </div>
-        </section>
+        </div>
 
-        <!-- Sektion 4: Aktivitäten -->
-        <section class="story-section">
-            <div class="story-text">
-                <h2><span class="icon">🏋️‍♀️</span> 04. Hardcore Performance</h2>
-                <p>April war ein wilder Monat. Von schweren Gewichten im Krafttraining bis hin zu intensiven Gravel-Touren und HIIT-Sessions war alles dabei.</p>
-                <div class="who-box">
-                    <strong>WHO-Richtlinie:</strong> 150 Minuten moderate oder 75 Minuten intensive Aktivität pro Woche. Plus 2x Krafttraining.
-                </div>
-                <div class="motivation-box">
-                    <strong>Status:</strong> Du zerstörst diese Richtlinien förmlich. Überragende Leistung!
-                </div>
-            </div>
-            <div class="story-visual">
-                <canvas id="activityChart"></canvas>
-            </div>
-        </section>
-    </main>
+        <div class="story-visual">
+            <canvas id="sleepChart"></canvas>
+        </div>
+    </section>
 
-    <script src="app.js"></script>
-</body>
-</html>
+    <!-- Sektion 2: Belastung -->
+    <section class="story-section">
+        <div class="story-text">
+            <h2><span class="icon">🫀</span> 02. Belastung & Erholung</h2>
+
+            <p>Die Belastungswerte blieben über weite Teile der Woche stabil. Am 19. April wurde ein erhöhter Belastungswert erfasst, der auf intensive körperliche Aktivität oder eine reduzierte Erholung hinweisen kann.</p>
+
+            <div class="motivation-box">
+                <strong>Analyse:</strong> Kurzfristige Belastungsspitzen sind nach intensiven Trainingseinheiten erwartbar und sollten im Zusammenhang mit Schlaf- und Aktivitätsdaten bewertet werden.
+            </div>
+        </div>
+
+        <div class="story-visual">
+            <canvas id="stressChart"></canvas>
+        </div>
+    </section>
+
+    <!-- Sektion 3: Bewegung -->
+    <section class="story-section">
+        <div class="story-text">
+            <h2><span class="icon">👟</span> 03. Alltagsbewegung</h2>
+
+            <p>Die tägliche Schrittzahl liefert einen Überblick über das allgemeine Aktivitätsniveau. Mehrere Tage lagen oberhalb der Referenzmarke von 10.000 Schritten und deuten auf eine hohe Alltagsaktivität hin.</p>
+
+            <div class="who-box">
+                <strong>Orientierungswert:</strong> Regelmäßige Bewegung unterstützt die Herz-Kreislauf-Gesundheit und trägt zur langfristigen Erhaltung der körperlichen Leistungsfähigkeit bei.
+            </div>
+        </div>
+
+        <div class="story-visual">
+            <canvas id="stepsChart"></canvas>
+        </div>
+    </section>
+
+    <!-- Sektion 4: Trainingsverteilung -->
+    <section class="story-section">
+        <div class="story-text">
+            <h2><span class="icon">🏋️‍♀️</span> 04. Trainingsverteilung</h2>
+
+            <p>Die Aktivitäten verteilen sich auf Krafttraining, Ausdauertraining, hochintensive Belastungen und Alltagsbewegung. Die Kombination verschiedener Trainingsformen ermöglicht eine ausgewogene Beanspruchung unterschiedlicher Leistungsbereiche.</p>
+
+            <div class="who-box">
+                <strong>Orientierungswert:</strong> Die Weltgesundheitsorganisation empfiehlt mindestens 150 Minuten moderate oder 75 Minuten intensive Aktivität pro Woche sowie regelmäßiges Krafttraining.</div>
+
+            <div class="motivation-box">
+                <strong>Status:</strong> Das Aktivitätsniveau liegt über den empfohlenen Mindestwerten für Erwachsene.
+            </div>
+        </div>
+
+        <div class="story-visual">
+            <canvas id="activityChart"></canvas>
+        </div>
+    </section>
+
+</main>
