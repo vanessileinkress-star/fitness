@@ -3,36 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Daily Routine - Fitness Story</title>
+    <title>Beat Yesterday - Meine Datenstory</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
     <header>
-        <h1>Mein Tag, meine Gesundheit</h1>
-        <p>Eine interaktive Story-Auswertung meiner Fitnessdaten.</p>
+        <h1>Beat Yesterday</h1>
+        <p>Erfolge sichtbar machen. Trainieren, Erholen, Wiederholen.</p>
     </header>
 
     <main>
-        <section class="story-section" id="morning">
+        <!-- Story Sektion 1: Schlaf/Regeneration -->
+        <section class="story-section" id="sleep">
             <div class="story-text">
-                <h2>07:00 Uhr – Der Start in den Tag</h2>
-                <p>Wie gut habe ich geschlafen? Die WHO empfiehlt für Erwachsene 7-9 Stunden Schlaf. Mal sehen, ob ich mein Ziel erreicht habe.</p>
-                <div class="privacy-note">🔒 DSGVO-Hinweis: Diese Daten liegen nur lokal in deinem Browser.</div>
+                <h2>01. Das Fundament: Schlaf</h2>
+                <p>Als Sportlerin weißt du: Muskeln wachsen nicht beim Training, sondern im Bett[cite: 3]. Schlaf ist deine wichtigste Trainingseinheit[cite: 1, 3]. Die WHO fordert mindestens 7 Stunden Schlaf für kognitive und körperliche Fitness.</p>
+                <div class="highlight-box">
+                    <strong>Dein Status:</strong> Dein Tiefschlaf ist genetisch ein absoluter Segen (oft Maximum erreicht) – aber die Gesamtdauer schwankt stark!
+                </div>
+                <div class="privacy-badge">🔒 DSGVO-Konform: Keine Cloud, alles Local</div>
             </div>
             <div class="story-visual">
                 <canvas id="sleepChart"></canvas>
             </div>
         </section>
 
-        <section class="story-section" id="noon">
+        <!-- Story Sektion 2: Recovery Score -->
+        <section class="story-section" id="recovery">
             <div class="story-text">
-                <h2>13:00 Uhr – Die Bewegungs-Challenge</h2>
-                <p>Im Unialltag sitzen wir viel zu viel. Erreiche ich die magischen 10.000 Schritte?</p>
+                <h2>02. Der Check: Reicht der Akku?</h2>
+                <p>Egal ob Graveln, Hyrox oder schweres Krafttraining – deine Sessions verlangen deinem Körper alles ab[cite: 3]. Der Garmin Recovery Score zeigt dir knallhart, ob dein Nervensystem bereit für das nächste Workout ist oder ob du ins Übertraining steuerst[cite: 1].</p>
+                <div class="highlight-box">
+                    <strong>Sportler-Insight:</strong> Nach extrem intensiven Tagen stürzt deine Erholung ab[cite: 1]. Achte auf das rote Limit – Beat Yesterday bedeutet auch zu wissen, wann Pause ist!
+                </div>
             </div>
             <div class="story-visual">
-                <canvas id="stepsChart"></canvas>
+                <canvas id="recoveryChart"></canvas>
             </div>
         </section>
     </main>
