@@ -1,134 +1,98 @@
-Chart.defaults.color = '#a0a0a0';
-Chart.defaults.font.family = "'Helvetica Neue', Arial, sans-serif";
+Chart.defaults.color = '#6e6e73';
+Chart.defaults.font.family =
+    "-apple-system, BlinkMacSystemFont, 'SF Pro Display', Arial";
 
-const labels = ['Di (14.)', 'Mi (15.)', 'Do (16.)', 'Fr (17.)', 'Sa (18.)', 'So (19.)', 'Mo (20.)'];
+const labels = ['14', '15', '16', '17', '18', '19', '20'];
 
 const sleepData = [7.8, 8.4, 8.1, 8.3, 8.3, 9.0, 7.3];
 const stressData = [18.7, 18.4, 22.2, 22.0, 22.2, 31.7, 16.9];
 const stepsData = [8400, 11200, 7800, 9500, 14500, 12300, 8900];
 
+function baseOptions() {
+    return {
+        responsive: true,
+        plugins: {
+            legend: { display: false }
+        },
+        scales: {
+            x: { grid: { display: false } },
+            y: { grid: { color: '#eeeeee' } }
+        }
+    };
+}
 
-// SLEEP CHART
+// SLEEP
 new Chart(document.getElementById('sleepChart'), {
-    type: 'bar',
+    type: 'line',
     data: {
         labels,
-        datasets: [
-            {
-                label: 'Schlafdauer (h)',
-                data: sleepData,
-                backgroundColor: '#426e92',
-                borderRadius: 6
-            },
-            {
-                label: 'Zielwert (7h)',
-                data: Array(7).fill(7),
-                type: 'line',
-                borderColor: '#ff4444',
-                borderDash: [5, 5],
-                pointRadius: 0
-            }
-        ]
+        datasets: [{
+            data: sleepData,
+            borderColor: '#007aff',
+            backgroundColor: 'rgba(0,122,255,0.08)',
+            fill: true,
+            tension: 0.4,
+            pointRadius: 0
+        }]
     },
-    options: {
-        scales: {
-            y: { min: 0, max: 12 },
-            x: { grid: { display: false } }
-        },
-        plugins: {
-            tooltip: {
-                callbacks: {
-                    afterLabel: function(ctx) {
-                        return ctx.raw >= 8
-                            ? 'Regeneration im optimalen Bereich.'
-                            : 'Im empfohlenen Bereich.';
-                    }
-                }
-            }
-        }
-    }
+    options: baseOptions()
 });
 
-
-// STRESS CHART
+// STRESS
 new Chart(document.getElementById('stressChart'), {
     type: 'line',
     data: {
         labels,
         datasets: [{
-            label: 'Belastungsindex',
             data: stressData,
-            borderColor: '#426e92',
-            backgroundColor: 'rgba(66,110,146,0.1)',
+            borderColor: '#ff3b30',
+            backgroundColor: 'rgba(255,59,48,0.08)',
             fill: true,
-            tension: 0.4
+            tension: 0.4,
+            pointRadius: 0
         }]
     },
-    options: {
-        scales: {
-            y: { min: 0, max: 50 },
-            x: { grid: { display: false } }
-        },
-        plugins: {
-            tooltip: {
-                callbacks: {
-                    afterLabel: function(ctx) {
-                        return ctx.raw > 25
-                            ? 'Erhöhte Belastung registriert.'
-                            : 'Stabiles Belastungsniveau.';
-                    }
-                }
-            }
-        }
-    }
+    options: baseOptions()
 });
 
-
-// STEPS CHART
+// STEPS
 new Chart(document.getElementById('stepsChart'), {
     type: 'bar',
     data: {
         labels,
-        datasets: [
-            {
-                label: 'Schritte',
-                data: stepsData,
-                backgroundColor: '#3c3486',
-                borderRadius: 6
-            },
-            {
-                label: 'Richtwert (10.000)',
-                data: Array(7).fill(10000),
-                type: 'line',
-                borderColor: '#ff4444',
-                borderDash: [5, 5],
-                pointRadius: 0
-            }
-        ]
+        datasets: [{
+            data: stepsData,
+            backgroundColor: '#007aff',
+            borderRadius: 6
+        }]
     },
-    options: {
-        scales: {
-            y: { grid: { color: '#1a1a1a' } },
-            x: { grid: { display: false } }
-        }
-    }
+    options: baseOptions()
 });
 
-
-// ACTIVITY CHART
+// ACTIVITY
 new Chart(document.getElementById('activityChart'), {
     type: 'doughnut',
     data: {
-        labels: ['Krafttraining', 'Radsport', 'Intervalltraining', 'Gehen'],
+        labels: ['Strength', 'Cycling', 'HIIT', 'Walking'],
         datasets: [{
             data: [45, 25, 15, 15],
-            backgroundColor: ['#426e92', '#3c3486', '#222222', '#ff4444']
+            backgroundColor: [
+                '#007aff',
+                '#5856d6',
+                '#ff3b30',
+                '#34c759'
+            ]
         }]
     },
     options: {
-        cutout: '75%',
         plugins: {
-            legend: { position: 'right' }
-        }
+            legend: {
+                position: 'bottom',
+                labels: {
+                    color: '#6e6e73'
+                }
+            }
+        },
+        cutout: '70%'
     }
 });
