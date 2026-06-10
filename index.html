@@ -14,21 +14,19 @@
         <p>Analysezeitraum: April 2026 | DSGVO-konforme lokale Datenverarbeitung</p>
     </header>
 
-    <!-- Interaktiver Wochen-Slider -->
     <div class="controls-container">
         <label id="weekLabel">Anzeige: Woche 1 (01.04. - 07.04.)</label>
         <input type="range" min="1" max="4" value="1" class="slider" id="weekSlider">
     </div>
 
-    <main>
-        <!-- Sektion 1: Schlaf -->
-        <section class="story-section">
+    <main class="dashboard-container">
+        <section class="dashboard-section">
             <div class="story-text">
                 <h2>Regeneration</h2>
                 <div class="dashboard-grid">
                     <div class="db-item accent">
                         <div class="db-label">Kennzahl</div>
-                        <div class="db-value" id="val-sleep-duration">Ø 7 h 48 min</div>
+                        <div class="db-value" id="val-sleep-duration">Ø 7 h 42 min</div>
                     </div>
                     <div class="db-item">
                         <div class="db-label">Bewertung</div>
@@ -49,14 +47,13 @@
             </div>
         </section>
 
-        <!-- Sektion 2: Stress -->
-        <section class="story-section">
+        <section class="dashboard-section">
             <div class="story-text">
                 <h2>Vegetatives Nervensystem</h2>
                 <div class="dashboard-grid">
                     <div class="db-item accent">
                         <div class="db-label">Ø Stresslevel</div>
-                        <div class="db-value" id="val-stress-level">19 / 100</div>
+                        <div class="db-value" id="val-stress-level">15 / 100</div>
                     </div>
                     <div class="db-item">
                         <div class="db-label">Bewertung</div>
@@ -73,8 +70,7 @@
             </div>
         </section>
 
-        <!-- Sektion 3: Schritte -->
-        <section class="story-section">
+        <section class="dashboard-section">
             <div class="story-text">
                 <h2>Alltagsaktivität</h2>
                 <div class="dashboard-grid">
@@ -97,8 +93,7 @@
             </div>
         </section>
 
-        <!-- Sektion 4: Sport-Aktivitäten -->
-        <section class="story-section">
+        <section class="dashboard-section">
             <div class="story-text">
                 <h2>Aktivitäten-Splits</h2>
                 <div class="dashboard-grid">
@@ -108,7 +103,7 @@
                     </div>
                     <div class="db-item">
                         <div class="db-label">Belastungsfokus</div>
-                        <div class="db-desc" id="val-activity-focus">Krafttraining / Gravel-Cycling</div>
+                        <div class="db-desc" id="val-activity-focus">Krafttraining & Gehen</div>
                     </div>
                     <div class="db-item who">
                         <div class="db-label">WHO Benchmark</div>
