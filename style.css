@@ -1,9 +1,11 @@
 :root {
-    --bg-color: #3c3486;       /* Dein Hauptton für den Hintergrund */
-    --card-bg: #426e92;        /* Dein Zweitton für die Daten-Karten */
+    --bg-color: #000000;       /* Schwarzer Hintergrund */
+    --card-bg: #111111;        /* Sehr dunkles Grau für Kontrast */
     --text-color: #ffffff;
-    --accent-red: #ff4d4d;     /* Sportliches Rot für Benchmarks/Ziele */
-    --text-muted: #dcd1f1;
+    --accent-1: #426e92;       /* Dein helleres Blau */
+    --accent-2: #3c3486;       /* Dein dunkles Indigo */
+    --who-red: #ff4444;        /* Rot für WHO-Linien */
+    --text-muted: #a0a0a0;
 }
 
 body {
@@ -17,31 +19,29 @@ body {
 
 header {
     text-align: center;
-    padding: 6rem 2rem;
-    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 100%);
+    padding: 5rem 2rem 3rem;
+    border-bottom: 2px solid var(--accent-2);
 }
 
 header h1 {
     font-size: 3.5rem;
-    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     margin-bottom: 0.5rem;
-}
-
-header p {
-    font-size: 1.2rem;
-    color: var(--text-muted);
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .story-section {
     display: flex;
-    min-height: 70vh;
+    min-height: 60vh;
     align-items: center;
     justify-content: space-around;
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    border-bottom: 1px solid #222;
 }
 
 .story-section:nth-child(even) {
@@ -50,44 +50,45 @@ header p {
 
 .story-text {
     flex: 1;
-    max-width: 450px;
+    max-width: 480px;
     padding: 2rem;
 }
 
 .story-text h2 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
+    font-size: 2rem;
+    color: var(--accent-1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.story-text p {
-    font-size: 1.1rem;
-    color: var(--text-muted);
+.icon {
+    font-size: 2.5rem;
 }
 
-.highlight-box {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-left: 4px solid var(--accent-red);
+.who-box {
+    background: rgba(255, 68, 68, 0.1);
+    border-left: 4px solid var(--who-red);
     padding: 1rem;
     margin-top: 1.5rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+}
+
+.motivation-box {
+    background: linear-gradient(90deg, rgba(66, 110, 146, 0.2), rgba(60, 52, 134, 0.2));
+    border-left: 4px solid var(--accent-1);
+    padding: 1rem;
+    margin-top: 1rem;
     border-radius: 0 8px 8px 0;
 }
 
 .story-visual {
     flex: 1;
-    max-width: 550px;
+    max-width: 600px;
     background-color: var(--card-bg);
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
-
-.privacy-badge {
-    display: inline-block;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(66, 110, 146, 0.1);
 }
