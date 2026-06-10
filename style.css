@@ -1,90 +1,83 @@
-:root {
-    --bg-color: #000000;       /* Reines Schwarz */
-    --text-color: #ffffff;
-    --accent-1: #426e92;       /* Helles Blau */
-    --accent-2: #3c3486;       /* Dunkles Indigo */
-    --who-red: #ff4444;        /* Rot für WHO-Linien */
-    --text-muted: #a0a0a0;
-}
-
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
     margin: 0;
-    padding: 0;
-    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial;
+    background: #f5f5f7;
+    color: #111;
 }
 
-header {
-    text-align: center;
-    padding: 5rem 2rem 3rem;
-    border-bottom: 1px solid var(--accent-2);
+/* HEADER */
+.topbar {
+    padding: 40px 24px 10px;
 }
 
-header h1 {
-    font-size: 3.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.topbar h1 {
+    font-size: 34px;
+    font-weight: 700;
+    margin: 0;
 }
 
-.story-section {
+.topbar p {
+    color: #6e6e73;
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+/* CONTAINER */
+.container {
+    padding: 10px 16px 40px;
     display: flex;
-    min-height: 60vh;
-    align-items: center;
-    justify-content: space-around;
-    padding: 4rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    border-bottom: 1px solid #1a1a1a;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.story-section:nth-child(even) {
-    flex-direction: row-reverse;
+/* CARD STYLE (Apple Health) */
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 18px 18px 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
-.story-text {
-    flex: 1;
-    max-width: 480px;
-    padding: 2rem;
+.card h2 {
+    margin: 0;
+    font-size: 20px;
 }
 
-.story-text h2 {
-    font-size: 2rem;
-    color: var(--accent-1);
+.sub {
+    font-size: 13px;
+    color: #6e6e73;
+    margin-top: 4px;
+}
+
+/* KPI ROW */
+.kpi {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    margin-top: 12px;
 }
 
-.icon {
-    font-size: 2.5rem;
+.label {
+    font-size: 11px;
+    color: #8e8e93;
+    display: block;
 }
 
-.who-box {
-    background: rgba(255, 68, 68, 0.05);
-    border-left: 4px solid var(--who-red);
-    padding: 1rem;
-    margin-top: 1.5rem;
-    border-radius: 0 8px 8px 0;
-    font-size: 0.95rem;
+.value {
+    font-size: 16px;
+    font-weight: 600;
 }
 
-.motivation-box {
-    background: linear-gradient(90deg, rgba(66, 110, 146, 0.1), rgba(60, 52, 134, 0.1));
-    border-left: 4px solid var(--accent-1);
-    padding: 1rem;
-    margin-top: 1rem;
-    border-radius: 0 8px 8px 0;
+.good {
+    color: #34c759;
 }
 
-.story-visual {
-    flex: 1;
-    max-width: 600px;
-    background-color: #000000; /* Grafik-Hintergrund jetzt auch schwarz */
-    padding: 2rem;
+.warn {
+    color: #ff9500;
+}
+
+/* CHART SIZE */
+canvas {
+    margin-top: 12px;
+    width: 100% !important;
+    height: 180px !important;
 }
