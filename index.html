@@ -3,44 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beat Yesterday - Meine Datenstory</title>
+    <title>Meine Fitness-Story | April 2026</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
     <header>
-        <h1>Beat Yesterday</h1>
-        <p>Erfolge sichtbar machen. Trainieren, Erholen, Wiederholen.</p>
+        <h1>April 2026 Insights</h1>
+        <p>Daten lügen nicht. Meine Performance, meine Erholung, meine Story.</p>
     </header>
 
     <main>
-        <!-- Story Sektion 1: Schlaf/Regeneration -->
-        <section class="story-section" id="sleep">
+        <!-- Sektion 1: Schlaf -->
+        <section class="story-section">
             <div class="story-text">
-                <h2>01. Das Fundament: Schlaf</h2>
-                <p>Als Sportlerin weißt du: Muskeln wachsen nicht beim Training, sondern im Bett[cite: 3]. Schlaf ist deine wichtigste Trainingseinheit[cite: 1, 3]. Die WHO fordert mindestens 7 Stunden Schlaf für kognitive und körperliche Fitness.</p>
-                <div class="highlight-box">
-                    <strong>Dein Status:</strong> Dein Tiefschlaf ist genetisch ein absoluter Segen (oft Maximum erreicht) – aber die Gesamtdauer schwankt stark!
+                <h2><span class="icon">🛌</span> 01. Schlaf & Regeneration</h2>
+                <p>Mitte April (14.04. - 20.04.) war intensiv. Schlaf ist der stärkste legale Performance-Booster. An fast allen Tagen lieferte ich über 7,5 Stunden ab[cite: 1]!</p>
+                <div class="who-box">
+                    <strong>WHO-Richtlinie:</strong> Erwachsene benötigen 7 bis 9 Stunden hochwertigen Schlaf pro Nacht zur Zellregeneration.
                 </div>
-                <div class="privacy-badge">🔒 DSGVO-Konform: Keine Cloud, alles Local</div>
+                <div class="motivation-box">
+                    <strong>Status:</strong> Ziel erreicht! Du bist eine Maschine im Regenerieren. Klick auf die Balken in der Grafik für Details!
+                </div>
             </div>
             <div class="story-visual">
                 <canvas id="sleepChart"></canvas>
             </div>
         </section>
 
-        <!-- Story Sektion 2: Recovery Score -->
-        <section class="story-section" id="recovery">
+        <!-- Sektion 2: Stress -->
+        <section class="story-section">
             <div class="story-text">
-                <h2>02. Der Check: Reicht der Akku?</h2>
-                <p>Egal ob Graveln, Hyrox oder schweres Krafttraining – deine Sessions verlangen deinem Körper alles ab[cite: 3]. Der Garmin Recovery Score zeigt dir knallhart, ob dein Nervensystem bereit für das nächste Workout ist oder ob du ins Übertraining steuerst[cite: 1].</p>
-                <div class="highlight-box">
-                    <strong>Sportler-Insight:</strong> Nach extrem intensiven Tagen stürzt deine Erholung ab[cite: 1]. Achte auf das rote Limit – Beat Yesterday bedeutet auch zu wissen, wann Pause ist!
+                <h2><span class="icon">🫀</span> 02. Belastung & Stress</h2>
+                <p>Körperlicher und mentaler Stress spiegeln sich in der Herzratenvariabilität wider. Am 19. April schoss dein Stresslevel auf über 31 hoch[cite: 1].</p>
+                <div class="motivation-box">
+                    <strong>Insight:</strong> Ein hohes Stresslevel nach harten Trainingstagen (wie dem Graveln am 18.04.[cite: 3]) ist normal. Der Körper arbeitet!
                 </div>
             </div>
             <div class="story-visual">
-                <canvas id="recoveryChart"></canvas>
+                <canvas id="stressChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Sektion 3: Alltagsbewegung -->
+        <section class="story-section">
+            <div class="story-text">
+                <h2><span class="icon">👟</span> 03. Alltags-Moves</h2>
+                <p>Zwischen Uni-Vorlesungen und Schreibtischarbeit ist Bewegung das A und O.</p>
+                <div class="who-box">
+                    <strong>WHO-Richtlinie:</strong> Mindestens 10.000 Schritte täglich reduzieren das Risiko für Herz-Kreislauf-Erkrankungen drastisch.
+                </div>
+            </div>
+            <div class="story-visual">
+                <canvas id="stepsChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Sektion 4: Aktivitäten -->
+        <section class="story-section">
+            <div class="story-text">
+                <h2><span class="icon">🏋️‍♀️</span> 04. Hardcore Performance</h2>
+                <p>April war ein wilder Monat. Du hast nicht nur am Schreibtisch gesessen, sondern bist aufs Gravelbike gestiegen und hast schwere Gewichte bewegt[cite: 3].</p>
+                <div class="who-box">
+                    <strong>WHO-Richtlinie:</strong> 150 Minuten moderate oder 75 Minuten intensive Aktivität pro Woche. Plus 2x Krafttraining.
+                </div>
+                <div class="motivation-box">
+                    <strong>Status:</strong> Du zerstörst diese Richtlinien förmlich. Weiter so!
+                </div>
+            </div>
+            <div class="story-visual">
+                <canvas id="activityChart"></canvas>
             </div>
         </section>
     </main>
