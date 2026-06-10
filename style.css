@@ -1,83 +1,87 @@
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial;
-    background: #f5f5f7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f5f7fb;
     color: #111;
 }
 
 /* HEADER */
-.topbar {
-    padding: 40px 24px 10px;
+header {
+    padding: 40px 22px 10px;
 }
 
-.topbar h1 {
-    font-size: 34px;
-    font-weight: 700;
+header h1 {
+    font-size: 32px;
     margin: 0;
+    font-weight: 700;
 }
 
-.topbar p {
-    color: #6e6e73;
+header p {
     margin-top: 6px;
+    color: #6e6e73;
     font-size: 14px;
 }
 
-/* CONTAINER */
-.container {
+/* LAYOUT CONTAINER */
+main {
     padding: 10px 16px 40px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
 }
 
-/* CARD STYLE (Apple Health) */
-.card {
-    background: white;
-    border-radius: 20px;
-    padding: 18px 18px 10px;
+/* SECTION CARD (WICHTIG: kein Layoutbruch mehr) */
+.story-section {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-}
 
-.card h2 {
-    margin: 0;
-    font-size: 20px;
-}
-
-.sub {
-    font-size: 13px;
-    color: #6e6e73;
-    margin-top: 4px;
-}
-
-/* KPI ROW */
-.kpi {
     display: flex;
-    justify-content: space-between;
-    margin-top: 12px;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.label {
-    font-size: 11px;
-    color: #8e8e93;
-    display: block;
+/* TEXT */
+.story-text h2 {
+    margin: 0;
+    font-size: 18px;
 }
 
-.value {
-    font-size: 16px;
-    font-weight: 600;
+.story-text p {
+    margin: 8px 0;
+    color: #333;
+    line-height: 1.5;
 }
 
-.good {
-    color: #34c759;
+/* INFO BOXEN */
+.who-box,
+.motivation-box {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.4;
 }
 
-.warn {
-    color: #ff9500;
+/* neutral Apple-like */
+.who-box {
+    background: rgba(122, 183, 255, 0.12);
+    border-left: 4px solid #7ab7ff;
 }
 
-/* CHART SIZE */
+/* highlight box */
+.motivation-box {
+    background: rgba(122, 218, 255, 0.12);
+    border-left: 4px solid #7adbff;
+}
+
+/* CHART AREA */
+.story-visual {
+    margin-top: 10px;
+}
+
 canvas {
-    margin-top: 12px;
     width: 100% !important;
-    height: 180px !important;
+    height: 200px !important;
 }
