@@ -3,96 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Overview | April 2026</title>
-
+    <title>Health Dashboard | April 2026</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
 
-<header class="topbar">
-    <h1>Health Overview</h1>
-    <p>April 14–20, 2026 · Activity & Recovery Analytics</p>
-</header>
+    <header>
+        <h1>Health & Performance Dashboard</h1>
+        <p>Analysezeitraum: April 2026 | DSGVO-konforme lokale Datenverarbeitung</p>
+    </header>
 
-<main class="container">
+    <!-- Interaktiver Wochen-Slider -->
+    <div class="controls-container">
+        <label id="weekLabel">Anzeige: Woche 1 (01.04. - 07.04.)</label>
+        <input type="range" min="1" max="4" value="1" class="slider" id="weekSlider">
+    </div>
 
-    <section class="card">
-        <div class="card-text">
-            <h2>Sleep</h2>
-            <p class="sub">Recovery & duration trends</p>
-
-            <div class="kpi">
-                <div>
-                    <span class="label">Average</span>
-                    <span class="value">8.2 h</span>
-                </div>
-                <div>
-                    <span class="label">Status</span>
-                    <span class="value good">Optimal</span>
-                </div>
-            </div>
-        </div>
-
-        <canvas id="sleepChart"></canvas>
-    </section>
-
-
-    <section class="card">
-        <div class="card-text">
-            <h2>Body Strain</h2>
-            <p class="sub">Load & stress response</p>
-
-            <div class="kpi">
-                <div>
-                    <span class="label">Peak</span>
-                    <span class="value warn">31.7</span>
-                </div>
-                <div>
-                    <span class="label">Status</span>
-                    <span class="value">Stable</span>
+    <main>
+        <!-- Sektion 1: Schlaf -->
+        <section class="story-section">
+            <div class="story-text">
+                <h2>Regeneration</h2>
+                <div class="dashboard-grid">
+                    <div class="db-item accent">
+                        <div class="db-label">Kennzahl</div>
+                        <div class="db-value" id="val-sleep-duration">Ø 7 h 48 min</div>
+                    </div>
+                    <div class="db-item">
+                        <div class="db-label">Bewertung</div>
+                        <div class="db-value" id="val-sleep-status">Optimal</div>
+                    </div>
+                    <div class="db-item">
+                        <div class="db-label">Handlungsempfehlung</div>
+                        <div class="db-desc">Schlafrhythmus beibehalten. Ausreichend Tiefschlafphasen gesichert.</div>
+                    </div>
+                    <div class="db-item who">
+                        <div class="db-label">WHO Benchmark</div>
+                        <div class="db-desc">7 bis 9 Stunden pro Nacht für Erwachsene empfohlen.</div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="story-visual">
+                <canvas id="sleepChart"></canvas>
+            </div>
+        </section>
 
-        <canvas id="stressChart"></canvas>
-    </section>
-
-
-    <section class="card">
-        <div class="card-text">
-            <h2>Steps</h2>
-            <p class="sub">Daily movement volume</p>
-
-            <div class="kpi">
-                <div>
-                    <span class="label">Average</span>
-                    <span class="value">10.1k</span>
-                </div>
-                <div>
-                    <span class="label">Goal</span>
-                    <span class="value good">Met</span>
+        <!-- Sektion 2: Stress -->
+        <section class="story-section">
+            <div class="story-text">
+                <h2>Vegetatives Nervensystem</h2>
+                <div class="dashboard-grid">
+                    <div class="db-item accent">
+                        <div class="db-label">Ø Stresslevel</div>
+                        <div class="db-value" id="val-stress-level">19 / 100</div>
+                    </div>
+                    <div class="db-item">
+                        <div class="db-label">Bewertung</div>
+                        <div class="db-value" id="val-stress-status">Niedrig</div>
+                    </div>
+                    <div class="db-item">
+                        <div class="db-label">Handlungsempfehlung</div>
+                        <div class="db-desc">Gute Balance zwischen Belastung und Erholung. Bereit für intensive Einheiten.</div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="story-visual">
+                <canvas id="stressChart"></canvas>
+            </div>
+        </section>
 
-        <canvas id="stepsChart"></canvas>
-    </section>
+        <!-- Sektion 3: Schritte -->
+        <section class="story-section">
+            <div class="story-text">
+                <h2>Alltagsaktivität</h2>
+                <div class="dashboard-grid">
+                    <div class="db-item accent">
+                        <div class="db-label">Schrittanzahl</div>
+                        <div class="db-value" id="val-steps-count">68.200 Schritte / Woche</div>
+                    </div>
+                    <div class="db-item">
+                        <div class="db-label">Bewertung</div>
+                        <div class="db-value" id="val-steps-status">Ziel erreicht</div>
+                    </div>
+                    <div class="db-item who">
+                        <div class="db-label">WHO Benchmark</div>
+                        <div class="db-desc">Mindestens 10.000 Schritte täglich zur Reduktion von Herz-Kreislauf-Risiken.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-visual">
+                <canvas id="stepsChart"></canvas>
+            </div>
+        </section>
 
+        <!-- Sektion 4: Sport-Aktivitäten -->
+        <section class="story-section">
+            <div class="story-text">
+                <h2>Aktivitäten-Splits</h2>
+                <div class="dashboard-grid">
+                    <div class="db-item accent">
+                        <div class="db-label">Trainingsstatus</div>
+                        <div class="db-value">Produktiv</div>
+                    </div>
+                    <div class="db-item">
+                        <div class="db-label">Belastungsfokus</div>
+                        <div class="db-desc" id="val-activity-focus">Krafttraining / Gravel-Cycling</div>
+                    </div>
+                    <div class="db-item who">
+                        <div class="db-label">WHO Benchmark</div>
+                        <div class="db-desc">Mindestens 150 Minuten moderate Bewegung + 2x Krafttraining pro Woche.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-visual">
+                <canvas id="activityChart"></canvas>
+            </div>
+        </section>
+    </main>
 
-    <section class="card">
-        <div class="card-text">
-            <h2>Training Mix</h2>
-            <p class="sub">Weekly activity distribution</p>
-        </div>
-
-        <canvas id="activityChart"></canvas>
-    </section>
-
-</main>
-
-<script src="app.js"></script>
-
+    <script src="app.js"></script>
 </body>
 </html>
