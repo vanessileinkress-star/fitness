@@ -10,44 +10,79 @@
 <body>
 
     <header>
-        <h1>Health & Performance Dashboard</h1>
-        <p>Analysezeitraum: April 2026 | DSGVO-konforme lokale Datenverarbeitung</p>
-        
-        <div class="barbell-container">
-            <div class="barbell-status-text" id="barbellStatus">Status: Optimal geladen</div>
-            <div class="barbell">
-                <div class="weight left" id="weightLeft"></div>
-                <div class="rod"></div>
-                <div class="weight right" id="weightRight"></div>
+        <div class="kettlebell-wrap">
+            <svg class="kettlebell-svg" id="kettlebellSvg" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                <!-- Handle -->
+                <path d="M35 52 Q35 18 60 18 Q85 18 85 52" stroke="#7ab7ff" stroke-width="10" fill="none" stroke-linecap="round"/>
+                <!-- Body -->
+                <circle cx="60" cy="88" r="38" fill="#0a0a1a" stroke="#7ab7ff" stroke-width="2"/>
+                <!-- Face eyes -->
+                <circle cx="48" cy="84" r="6" fill="white"/>
+                <circle cx="72" cy="84" r="6" fill="white"/>
+                <circle cx="50" cy="85" r="3.5" fill="#7ab7ff" id="eyeLeft"/>
+                <circle cx="74" cy="85" r="3.5" fill="#7ab7ff" id="eyeRight"/>
+                <!-- Smile -->
+                <path d="M50 96 Q60 104 70 96" stroke="#ffb3c6" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <!-- Cheeks -->
+                <circle cx="42" cy="93" r="5" fill="#ffb3c6" opacity="0.5"/>
+                <circle cx="78" cy="93" r="5" fill="#ffb3c6" opacity="0.5"/>
+                <!-- Arms -->
+                <line x1="22" y1="95" x2="35" y2="105" stroke="#0a0a1a" stroke-width="6" stroke-linecap="round"/>
+                <line x1="98" y1="95" x2="85" y2="105" stroke="#0a0a1a" stroke-width="6" stroke-linecap="round"/>
+                <!-- Thumbs up left hand -->
+                <circle cx="18" cy="93" r="7" fill="white" stroke="#ccc" stroke-width="1"/>
+                <line x1="18" y1="86" x2="18" y2="98" stroke="#ccc" stroke-width="2" stroke-linecap="round"/>
+                <!-- Right hand holding weight -->
+                <circle cx="102" cy="107" r="7" fill="white" stroke="#ccc" stroke-width="1"/>
+                <!-- Legs -->
+                <line x1="52" y1="124" x2="47" y2="136" stroke="#0a0a1a" stroke-width="6" stroke-linecap="round"/>
+                <line x1="68" y1="124" x2="73" y2="136" stroke="#0a0a1a" stroke-width="6" stroke-linecap="round"/>
+                <!-- Feet -->
+                <ellipse cx="43" cy="137" rx="9" ry="5" fill="white" stroke="#ccc" stroke-width="1"/>
+                <ellipse cx="77" cy="137" rx="9" ry="5" fill="white" stroke="#ccc" stroke-width="1"/>
+            </svg>
+            <div class="kettlebell-bubble" id="kettlebellBubble">
+                Woche 1: Top geladen! 💪
             </div>
+        </div>
+
+        <h1>Health &amp; Performance</h1>
+        <p class="subtitle">April 2026 · Vanessas persönliches Tracking</p>
+
+        <div class="status-badge" id="statusBadge">
+            <span class="status-dot" id="statusDot"></span>
+            <span id="statusText">Status: Optimal geladen</span>
         </div>
     </header>
 
     <div class="controls-container">
-        <label id="weekLabel">Anzeige: Woche 1 (01.04. - 07.04.)</label>
+        <label id="weekLabel">Woche 1 &nbsp;·&nbsp; 01.04. – 07.04.</label>
         <input type="range" min="1" max="4" value="1" class="slider" id="weekSlider">
+        <div class="week-ticks">
+            <span>KW 1</span><span>KW 2</span><span>KW 3</span><span>KW 4</span>
+        </div>
     </div>
 
     <main class="dashboard-container">
+
+        <!-- REGENERATION -->
         <section class="dashboard-section">
             <div class="story-text">
-                <h2>Regeneration</h2>
+                <div class="section-eyebrow">01 · Regeneration</div>
+                <h2>Wie gut hast du geschlafen?</h2>
+                <p class="story-copy" id="sleepCopy">Diese Woche lief's rund: 7 h 42 min Ø – Körper und Geist konnten sich vollständig erholen.</p>
                 <div class="dashboard-grid">
                     <div class="db-item accent">
-                        <div class="db-label">Kennzahl</div>
-                        <div class="db-value" id="val-sleep-duration">Ø 7 h 42 min</div>
+                        <div class="db-label">Ø Schlafdauer</div>
+                        <div class="db-value" id="val-sleep-duration">7 h 42 min</div>
                     </div>
                     <div class="db-item">
                         <div class="db-label">Bewertung</div>
                         <div class="db-value" id="val-sleep-status">Optimal</div>
                     </div>
-                    <div class="db-item">
-                        <div class="db-label">Handlungsempfehlung</div>
-                        <div class="db-desc">Schlafrhythmus beibehalten. Ausreichend Tiefschlafphasen gesichert.</div>
-                    </div>
                     <div class="db-item who">
                         <div class="db-label">WHO Benchmark</div>
-                        <div class="db-desc">7 bis 9 Stunden pro Nacht für Erwachsene empfohlen.</div>
+                        <div class="db-desc">7–9 Stunden pro Nacht für Erwachsene</div>
                     </div>
                 </div>
             </div>
@@ -56,9 +91,12 @@
             </div>
         </section>
 
-        <section class="dashboard-section">
+        <!-- STRESS -->
+        <section class="dashboard-section reverse">
             <div class="story-text">
-                <h2>Vegetatives Nervensystem</h2>
+                <div class="section-eyebrow">02 · Nervensystem</div>
+                <h2>Dein innerer Ruhepuls</h2>
+                <p class="story-copy" id="stressCopy">Niedriger Stressscore: dein vegetatives Nervensystem ist im Balance-Modus – perfekt für intensive Einheiten.</p>
                 <div class="dashboard-grid">
                     <div class="db-item accent">
                         <div class="db-label">Ø Stresslevel</div>
@@ -70,7 +108,7 @@
                     </div>
                     <div class="db-item">
                         <div class="db-label">Handlungsempfehlung</div>
-                        <div class="db-desc">Gute Balance zwischen Belastung und Erholung. Bereit für intensive Einheiten.</div>
+                        <div class="db-desc">Bereit für intensive Trainingseinheiten.</div>
                     </div>
                 </div>
             </div>
@@ -79,13 +117,16 @@
             </div>
         </section>
 
+        <!-- SCHRITTE -->
         <section class="dashboard-section">
             <div class="story-text">
-                <h2>Alltagsaktivität</h2>
+                <div class="section-eyebrow">03 · Alltagsaktivität</div>
+                <h2>Jeder Schritt zählt</h2>
+                <p class="story-copy" id="stepsCopy">68.200 Schritte diese Woche – WHO-Ziel täglich erreicht. Bewegung als fester Lebensbestandteil.</p>
                 <div class="dashboard-grid">
                     <div class="db-item accent">
-                        <div class="db-label">Schrittanzahl</div>
-                        <div class="db-value" id="val-steps-count">68.200 Schritte / Woche</div>
+                        <div class="db-label">Schritte / Woche</div>
+                        <div class="db-value" id="val-steps-count">68.200</div>
                     </div>
                     <div class="db-item">
                         <div class="db-label">Bewertung</div>
@@ -93,7 +134,7 @@
                     </div>
                     <div class="db-item who">
                         <div class="db-label">WHO Benchmark</div>
-                        <div class="db-desc">Mindestens 10.000 Schritte täglich zur Reduktion von Herz-Kreislauf-Risiken.</div>
+                        <div class="db-desc">10.000 Schritte/Tag zur Reduktion von Herz-Kreislauf-Risiken</div>
                     </div>
                 </div>
             </div>
@@ -102,9 +143,12 @@
             </div>
         </section>
 
-        <section class="dashboard-section">
+        <!-- AKTIVITÄTEN -->
+        <section class="dashboard-section reverse">
             <div class="story-text">
-                <h2>Aktivitäten-Splits</h2>
+                <div class="section-eyebrow">04 · Trainings-Split</div>
+                <h2>Deine Woche im Überblick</h2>
+                <p class="story-copy" id="activityCopy">Krafttraining dominiert den Plan – eine starke Basis für alle anderen Sportarten.</p>
                 <div class="dashboard-grid">
                     <div class="db-item accent">
                         <div class="db-label">Trainingsstatus</div>
@@ -112,19 +156,24 @@
                     </div>
                     <div class="db-item">
                         <div class="db-label">Belastungsfokus</div>
-                        <div class="db-desc" id="val-activity-focus">Krafttraining & Gehen</div>
+                        <div class="db-desc" id="val-activity-focus">Krafttraining &amp; Gehen</div>
                     </div>
                     <div class="db-item who">
                         <div class="db-label">WHO Benchmark</div>
-                        <div class="db-desc">Mindestens 150 Minuten moderate Bewegung + 2x Krafttraining pro Woche.</div>
+                        <div class="db-desc">150 min moderate Bewegung + 2× Kraft / Woche</div>
                     </div>
                 </div>
             </div>
-            <div class="story-visual">
+            <div class="story-visual donut-visual">
                 <canvas id="activityChart"></canvas>
             </div>
         </section>
+
     </main>
+
+    <footer>
+        <p>DSGVO-konforme lokale Datenverarbeitung · Keine Drittanbieter · Alle Daten bleiben bei dir.</p>
+    </footer>
 
     <script src="app.js"></script>
 </body>
