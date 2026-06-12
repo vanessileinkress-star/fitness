@@ -1,7 +1,6 @@
 Chart.defaults.color = '#555555';
 Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, sans-serif";
 
-// Datenstruktur April 2026 (Woche 1-4)
 const aprilData = {
     1: {
         dates: ['01.', '02.', '03.', '04.', '05.', '06.', '07.'],
@@ -9,7 +8,8 @@ const aprilData = {
         stress: [15.3, 20.5, 11.5, 11.4, 23.0, 22.0, 4.7],
         steps: [8400, 7800, 9500, 11200, 8900, 10100, 12300],
         activities: [40, 30, 10, 20],
-        summary: { sleep: "Ø 7 h 42 min", sleepStat: "Optimal", stress: "15 / 100", stressStat: "Niedrig", steps: "68.200 / Woche", stepsStat: "Ziel erreicht", focus: "Krafttraining & Gehen" }
+        summary: { sleep: "Ø 7 h 42 min", sleepStat: "Optimal", stress: "15 / 100", stressStat: "Niedrig", steps: "68.200 / Woche", stepsStat: "Ziel erreicht", focus: "Krafttraining & Gehen" },
+        barbell: { text: "Status: Optimal geladen", width: "30px", style: "barbell-optimal" }
     },
     2: {
         dates: ['08.', '09.', '10.', '11.', '12.', '13.', '14.'],
@@ -17,7 +17,8 @@ const aprilData = {
         stress: [23.8, 20.7, 22.6, 30.9, 23.7, 18.7, 18.4],
         steps: [7100, 6200, 8500, 13000, 14200, 11000, 8400],
         activities: [50, 10, 20, 20],
-        summary: { sleep: "Ø 6 h 08 min", sleepStat: "Erhöhtes Defizit", stress: "23 / 100", stressStat: "Moderat", steps: "68.400 / Woche", stepsStat: "Ziel erreicht", focus: "Krafttraining & HIIT" }
+        summary: { sleep: "Ø 6 h 08 min", sleepStat: "Erhöhtes Defizit", stress: "23 / 100", stressStat: "Moderat", steps: "68.400 / Woche", stepsStat: "Ziel erreicht", focus: "Krafttraining & HIIT" },
+        barbell: { text: "Status: Regenerations-Defizit", width: "10px", style: "barbell-warning" }
     },
     3: {
         dates: ['15.', '16.', '17.', '18.', '19.', '20.', '21.'],
@@ -25,7 +26,8 @@ const aprilData = {
         stress: [18.4, 22.0, 22.2, 31.7, 16.9, 27.7, 31.7],
         steps: [11200, 9500, 14500, 12300, 8900, 7600, 9100],
         activities: [30, 45, 15, 10],
-        summary: { sleep: "Ø 6 h 58 min", sleepStat: "Diskontinuierlich", stress: "24 / 100", stressStat: "Moderat", steps: "73.100 / Woche", stepsStat: "Ziel übertroffen", focus: "Gravel-Cycling & Kraft" }
+        summary: { sleep: "Ø 6 h 58 min", sleepStat: "Diskontinuierlich", stress: "24 / 100", stressStat: "Moderat", steps: "73.100 / Woche", stepsStat: "Ziel übertroffen", focus: "Gravel-Cycling & Kraft" },
+        barbell: { text: "Status: Belastung Hoch / Schlaf Instabil", width: "15px", style: "barbell-warning" }
     },
     4: {
         dates: ['22.', '23.', '24.', '25.', '26.', '27.', '28.'],
@@ -33,16 +35,30 @@ const aprilData = {
         stress: [17.7, 26.5, 19.0, 12.1, 23.3, 19.3, 21.9],
         steps: [9200, 8400, 10500, 11800, 13100, 9500, 10200],
         activities: [35, 25, 25, 15],
-        summary: { sleep: "Ø 7 h 53 min", sleepStat: "Optimal", stress: "20 / 100", stressStat: "Niedrig", steps: "72.700 / Woche", stepsStat: "Ziel erreicht", focus: "Krafttraining & HIIT" }
+        summary: { sleep: "Ø 7 h 53 min", sleepStat: "Optimal", stress: "20 / 100", stressStat: "Niedrig", steps: "72.700 / Woche", stepsStat: "Ziel erreicht", focus: "Krafttraining & HIIT" },
+        barbell: { text: "Status: Volle Performance", width: "45px", style: "barbell-optimal" }
     }
 };
 
 let chartSleep, chartStress, chartSteps, chartActivity;
 
+function updateBarbell(week) {
+    const config = aprilData[week].barbell;
+    const container = document.querySelector('.barbell-container');
+    const label = document.getElementById('barbellStatus');
+    const left = document.getElementById('weightLeft');
+    const right = document.getElementById('weightRight');
+
+    // Klassen zurücksetzen
+    container.className = "barbell-container " + config.style;
+    label.innerText = config.text;
+    left.style.width = config.width;
+    right.style.width = config.width;
+}
+
 function initCharts(week) {
     const data = aprilData[week];
 
-    // 1. SCHLAF CHART (#7ab7ff)
     chartSleep = new Chart(document.getElementById('sleepChart').getContext('2d'), {
         type: 'bar',
         data: {
@@ -53,7 +69,6 @@ function initCharts(week) {
         options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 0, max: 12, grid: { color: '#111' } }, x: { grid: { display: false } } } }
     });
 
-    // 2. STRESS CHART (#7adbff)
     chartStress = new Chart(document.getElementById('stressChart').getContext('2d'), {
         type: 'line',
         data: {
@@ -63,7 +78,6 @@ function initCharts(week) {
         options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 0, max: 55, grid: { color: '#111' } }, x: { grid: { display: false } } } }
     });
 
-    // 3. SCHRITTE CHART (#7ab7ff)
     chartSteps = new Chart(document.getElementById('stepsChart').getContext('2d'), {
         type: 'bar',
         data: {
@@ -74,7 +88,6 @@ function initCharts(week) {
         options: { responsive: true, maintainAspectRatio: false, scales: { y: { grid: { color: '#111' } }, x: { grid: { display: false } } } }
     });
 
-    // 4. AKTIVITÄTEN CHART (Doughnut)
     chartActivity = new Chart(document.getElementById('activityChart').getContext('2d'), {
         type: 'doughnut',
         data: {
@@ -83,6 +96,8 @@ function initCharts(week) {
         },
         options: { responsive: true, maintainAspectRatio: false, cutout: '80%', plugins: { legend: { position: 'right', labels: { color: '#888' } } } }
     });
+
+    updateBarbell(week);
 }
 
 function updateDashboard(week) {
