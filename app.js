@@ -1,6 +1,7 @@
 Chart.defaults.color = '#555555';
 Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, sans-serif";
 
+// Datenstruktur April 2026 (Woche 1-4)
 const aprilData = {
     1: {
         dates: ['01.', '02.', '03.', '04.', '05.', '06.', '07.'],
@@ -49,7 +50,6 @@ function updateBarbell(week) {
     const left = document.getElementById('weightLeft');
     const right = document.getElementById('weightRight');
 
-    // Klassen zurücksetzen
     container.className = "barbell-container " + config.style;
     label.innerText = config.text;
     left.style.width = config.width;
@@ -88,13 +88,34 @@ function initCharts(week) {
         options: { responsive: true, maintainAspectRatio: false, scales: { y: { grid: { color: '#111' } }, x: { grid: { display: false } } } }
     });
 
+    // 4. AKTIVITÄTEN CHART (Doughnut mit korrigierten Pastellfarben und schwarzer Trennlinie)
     chartActivity = new Chart(document.getElementById('activityChart').getContext('2d'), {
         type: 'doughnut',
         data: {
             labels: ['Krafttraining 🏋️‍♀️', 'Gravel 🚴‍♀️', 'HIIT/Hyrox 🏃‍♀️', 'Gehen 👟'],
-            datasets: [{ data: data.activities, backgroundColor: ['#7ab7ff', '#7adbff', '#161616', '#262626'], borderWidth: 0 }]
+            datasets: [{ 
+                data: data.activities, 
+                backgroundColor: [
+                    '#b3d4ff', // Pastell-Blau hell
+                    '#7ab7ff', // Hellblau Standard
+                    '#d1b3ff', // Pastell-Lila hell
+                    '#9b7aff'  // Pastell-Lila intensiv
+                ], 
+                borderColor: '#000000', // Verschmilzt mit dem schwarzen Hintergrund
+                borderWidth: 2 
+            }]
         },
-        options: { responsive: true, maintainAspectRatio: false, cutout: '80%', plugins: { legend: { position: 'right', labels: { color: '#888' } } } }
+        options: { 
+            responsive: true, 
+            maintainAspectRatio: false, 
+            cutout: '80%', 
+            plugins: { 
+                legend: { 
+                    position: 'right', 
+                    labels: { color: '#888', font: { size: 11 } } 
+                } 
+            } 
+        }
     });
 
     updateBarbell(week);
