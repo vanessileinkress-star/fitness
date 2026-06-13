@@ -17,7 +17,7 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-    overflow-x: hidden; /* Verhindert horizontales Scrollen durch die Kettlebells */
+    overflow-x: hidden;
 }
 
 /* ── HEADER ── */
@@ -96,12 +96,12 @@ header h1 {
 /* ── ZENTRIERTE MOTIVATION BAR ── */
 .motivation-bar {
     max-width: 700px;
-    margin: 0 auto 3rem auto; /* Mittig zentriert */
+    margin: 0 auto 3rem auto;
     padding: 1.5rem;
-    border-top: 3px solid var(--accent-blue); /* Linie oben statt links */
+    border-top: 3px solid var(--accent-blue);
     background: var(--bg-card);
     border-radius: 12px;
-    text-align: center; /* Text mittig */
+    text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
@@ -139,15 +139,15 @@ header h1 {
 
 .dashboard-section.reverse { flex-direction: row-reverse; }
 
+/* HIER IST DER NEUE ANKERPUNKT FÜR DIE KETTLEBELL */
 .story-text {
     flex: 1;
     min-width: 270px;
     max-width: 380px;
+    position: relative; /* GANZ WICHTIG! Hält die Kettlebell an der Leine */
 }
 
-/* ── SECTION HEADER & FREISCHWEBENDE KETTLEBELL ── */
 .section-header {
-    position: relative; /* WICHTIG: Ankerpunkt für die freischwebende Kettlebell */
     display: flex;
     flex-direction: column; 
     align-items: flex-start;
@@ -171,21 +171,21 @@ header h1 {
     margin: 0;
 }
 
-/* DIE KETTLEBELL BILDER (Freischwebend in der Lücke) */
+/* DIE KETTLEBELL (Perfekt in der Lücke positioniert) */
 .kb-mascot {
     position: absolute;
-    right: -130px; /* Schiebt die Kettlebell in die rechte Lücke */
-    top: -15px;    
-    width: 95px;   /* Schön groß, wie gewünscht */
+    right: -100px; /* Schiebt das Bild aus der Textbox in die Lücke */
+    top: 10px;     /* Setzt sie bündig mit der Überschrift */
+    width: 95px;   /* Schön groß */
     height: auto;
     z-index: 10;
     animation: float 3s ease-in-out infinite;
 }
 
-/* Die mittlere Sektion (Schritte) ist spiegelverkehrt! */
+/* Spiegelverkehrt für den mittleren Block (Schritte) */
 .dashboard-section.reverse .kb-mascot {
     right: auto;
-    left: -130px; /* Schiebt die Kettlebell in die linke Lücke */
+    left: -100px; 
 }
 
 @keyframes float {
@@ -216,8 +216,9 @@ header h1 {
 .db-value { font-size: 1.1rem; font-weight: 700; color: var(--text); }
 .db-desc  { font-size: 0.8rem; color: var(--text-soft); line-height: 1.5; }
 
-/* ── CHARTS ── */
+/* ── CHARTS (HIER WURDE DER FEHLER BEHOBEN) ── */
 .story-visual {
+    position: relative; /* GANZ WICHTIG! Ohne das verschwinden Chart.js Diagramme */
     flex: 1.4;
     min-width: 0;
     max-width: 540px;
@@ -229,7 +230,6 @@ header h1 {
 }
 
 .donut-visual { height: 270px; }
-canvas { width: 100% !important; height: 100% !important; }
 
 /* ── FOOTER ── */
 footer {
@@ -252,7 +252,6 @@ footer {
     .story-text { max-width: 100%; }
     .story-visual { width: 100%; max-width: 100%; }
     
-    /* Holt die Kettlebell auf dem Handy wieder ins normale Layout zurück */
-    .section-header { flex-direction: row; justify-content: space-between; align-items: center; }
-    .kb-mascot { position: relative; right: 0; left: 0 !important; top: 0; width: 75px; }
+    /* Auf dem Handy stellen wir die Kettlebell wieder neben die Überschrift */
+    .kb-mascot { position: absolute; right: 0; left: auto !important; top: -10px; width: 70px; }
 }
