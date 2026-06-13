@@ -6,7 +6,6 @@
     --text-muted: #5a5a80;
     --text-soft: #9999bb;
     --accent-blue: #7ab7ff;
-    --accent-dark: #3d4a6b;
     --who-red: #ff6b6b;
     --border: #12122a;
     --border-glow: #1e1e40;
@@ -21,7 +20,6 @@ body {
     line-height: 1.6;
 }
 
-/* ── HEADER ── */
 header {
     text-align: center;
     padding: 3rem 2rem 1.5rem;
@@ -42,7 +40,6 @@ header h1 {
     font-size: 0.88rem;
 }
 
-/* ── CONTROLS ── */
 .controls-container {
     max-width: 480px;
     margin: 2rem auto;
@@ -94,15 +91,16 @@ header h1 {
     letter-spacing: 0.5px;
 }
 
-/* ── MOTIVATION BAR ── */
+/* ── ZENTRIERTE MOTIVATION BAR ── */
 .motivation-bar {
     max-width: 700px;
-    margin: 0 auto 0;
-    padding: 1rem 1.5rem;
-    border-left: 3px solid var(--accent-blue);
+    margin: 0 auto 2.5rem auto;
+    padding: 1.5rem;
+    border-top: 3px solid var(--accent-blue); /* Symmetrische Linie oben statt links */
     background: var(--bg-card);
-    border-radius: 0 10px 10px 0;
-    margin-bottom: 1rem;
+    border-radius: 12px;
+    text-align: center; /* Alles mittig */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .mot-label {
@@ -110,12 +108,12 @@ header h1 {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-muted);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     font-weight: 600;
 }
 
 .mot-text {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-soft);
     line-height: 1.55;
     font-style: italic;
@@ -145,11 +143,10 @@ header h1 {
     max-width: 380px;
 }
 
-/* Der Container für Überschrift UND Kettlebell */
 .section-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     margin-bottom: 0.8rem;
 }
 
@@ -191,7 +188,6 @@ header h1 {
 .db-value { font-size: 1.1rem; font-weight: 700; color: var(--text); }
 .db-desc  { font-size: 0.8rem; color: var(--text-soft); line-height: 1.5; }
 
-/* ── CHARTS ── */
 .story-visual {
     flex: 1.4;
     min-width: 0;
@@ -206,62 +202,21 @@ header h1 {
 .donut-visual { height: 270px; }
 canvas { width: 100% !important; height: 100% !important; }
 
-/* ── DEINE CLEANE KETTLEBELL (Mini-Version) ── */
-.kb-indicator {
-    position: relative;
-    width: 46px;
-    height: 56px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
+/* ── DEINE PNG KETTLEBELLS ── */
+.kb-mascot {
+    width: 70px;
+    height: auto;
     margin-left: 1rem;
+    flex-shrink: 0;
+    animation: float 3s ease-in-out infinite;
 }
 
-.kb-handle {
-    width: 26px;
-    height: 16px;
-    border: 4px solid #333;
-    border-bottom: none;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
-    box-sizing: border-box;
-    z-index: 1;
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
 }
 
-.kb-body {
-    width: 40px;
-    height: 40px;
-    background-color: #0c0c1e;
-    border: 3px solid #333;
-    border-radius: 50%;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    box-sizing: border-box;
-    z-index: 2;
-    margin-top: -2px; /* Griff geht nahtlos über */
-}
-
-/* Die Füllung mit dem Cut-Out-Schlitz in der Mitte */
-.kb-fill {
-    width: 100%;
-    background: var(--accent-blue);
-    box-shadow: 0 0 8px rgba(122, 183, 255, 0.4);
-    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
-    
-    /* Der Schlitz aus deinem Bild */
-    mask: linear-gradient(to bottom, #000 0%, #000 46%, transparent 46%, transparent 54%, #000 54%, #000 100%);
-    -webkit-mask: linear-gradient(to bottom, #000 0%, #000 46%, transparent 46%, transparent 54%, #000 54%, #000 100%);
-}
-
-.kb-fill.warning {
-    background: var(--who-red);
-    box-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
-}
-
-/* ── FOOTER ── */
 footer {
     text-align: center;
     padding: 2rem;
@@ -270,7 +225,6 @@ footer {
     border-top: 1px solid var(--border);
 }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 720px) {
     .dashboard-section,
     .dashboard-section.reverse { flex-direction: column; gap: 2rem; padding: 3rem 0; }
