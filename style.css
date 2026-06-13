@@ -202,11 +202,12 @@ header h1 {
 .donut-visual { height: 270px; }
 canvas { width: 100% !important; height: 100% !important; }
 
+
 /* ── DEINE PNG KETTLEBELLS ── */
 .kb-mascot {
-    width: 70px;
+    width: 95px;         /* Hier die Größe angepasst (vorher 70px) */
     height: auto;
-    margin-left: 1rem;
+    margin-left: 1.5rem; /* Etwas mehr Abstand zum Text */
     flex-shrink: 0;
     animation: float 3s ease-in-out infinite;
 }
