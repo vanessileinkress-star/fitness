@@ -87,7 +87,13 @@ const BLUE_L   = 'rgba(122,183,255,0.7)';
 const RED_L    = 'rgba(255,107,107,0.6)';
 const RED_LINE = '#ff6b6b';
 const GRID     = 'rgba(255,255,255,0.04)';
-const MONOCHROME_BLUES = ['#7ab7ff', '#529af0', '#3076c9', '#1a4e8c'];
+// Neue, kontrastreiche Tech-Pastell-Palette für perfekte Lesbarkeit
+const ACTIVITY_COLORS = [
+    '#7ab7ff', // Krafttraining: Dein primäres Hellblau
+    '#b388ff', // Gravel: Ein edles Pastell-Lila
+    '#7adbff', // HIIT: Ein klares, leuchtendes Cyan
+    '#ffb7b2'  // Gehen: Ein weiches Pastell-Koralle (als warmer Kontrast)
+];
 
 const scaleBase = {
     grid: { color: GRID },
@@ -137,13 +143,14 @@ function buildCharts(week) {
     });
 
     // Aktivitäten Donut Chart
+// Aktivitäten Donut Chart
     chartActivity = new Chart(document.getElementById('activityChart').getContext('2d'), {
         type: 'doughnut',
         data: {
             labels: ['Krafttraining 🏋️', 'Gravel 🚴', 'HIIT / Hyrox 🏃', 'Gehen 👟'],
             datasets: [{
                 data: d.activities,
-                backgroundColor: MONOCHROME_BLUES,
+                backgroundColor: ACTIVITY_COLORS, // <-- HIER den neuen Namen eintragen
                 borderColor: '#080814',
                 borderWidth: 3,
                 hoverOffset: 6
@@ -156,6 +163,9 @@ function buildCharts(week) {
             animation: { duration: 320 },
             plugins: {
                 legend: { position: 'right', labels: { color: '#9999bb', font: { size: 11 }, boxWidth: 11, padding: 14, usePointStyle: true } }
+            }
+        }
+    });
             }
         }
     });
