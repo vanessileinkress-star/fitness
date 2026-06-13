@@ -88,12 +88,12 @@ const RED_L    = 'rgba(255,107,107,0.6)';
 const RED_LINE = '#ff6b6b';
 const GRID     = 'rgba(255,255,255,0.04)';
 
-// NEUE KONTRAST-FARBEN FÜR DAS RING-DIAGRAMM (bessere Lesbarkeit)
+// DEINE NEUEN FARBEN FÜR DEN TRAININGS-SPLIT
 const ACTIVITY_COLORS = [
-    '#7ab7ff', // Krafttraining: Primär Hellblau
-    '#b388ff', // Gravel: Pastell-Lila
-    '#7adbff', // HIIT: Cyan
-    '#ffb7b2'  // Gehen: Pastell-Koralle
+    '#7ab7ff', // Primärblau
+    '#188eff', // Helles Blau
+    '#173965', // Dunkles Blau
+    '#444a60'  // Graublau
 ];
 
 const scaleBase = {
@@ -188,33 +188,28 @@ function updateTexts(week) {
     document.getElementById('activityCopy').textContent    = d.act_copy;
     document.getElementById('val-activity-focus').textContent = d.act_focus;
     
-    // WHO Status Update für Aktivitäten
     document.getElementById('actWhoStatus').innerHTML = `<br><strong style="color:var(--accent-blue);">${d.act_who}</strong>`;
 
-    // Motivationsbalken Farbe
     const motBar = document.querySelector('.motivation-bar');
-    motBar.style.borderTopColor = d.mot_border;
+    motBar.style.borderTopColor = d.mot_border; 
 
-    // ---- BILDER FÜR DIE KETTLEBELLS UPDATEN ----
     const imgSleep = document.getElementById('kbImgSleep');
     const imgSteps = document.getElementById('kbImgSteps');
     const imgAct = document.getElementById('kbImgAct');
 
-    // Dateinamen der hochgeladenen Bilder
     const daumen = 'kettlebell_daumenhoch.png';
     const tipp = 'kettlebell.png';
 
-    // Bild-Logik: Je nach Woche ändern sich die Grafiken neben den Blöcken
     if (week === 1) {
         imgSleep.src = daumen;
         imgSteps.src = daumen;
         imgAct.src = daumen;
     } else if (week === 2) {
-        imgSleep.src = tipp;     // Schlafmangel!
+        imgSleep.src = tipp;     
         imgSteps.src = daumen;
-        imgAct.src = tipp;       // Risiko durch Übertraining
+        imgAct.src = tipp;       
     } else if (week === 3) {
-        imgSleep.src = tipp;     // Schlaf weiterhin instabil
+        imgSleep.src = tipp;     
         imgSteps.src = daumen;
         imgAct.src = daumen;     
     } else {
