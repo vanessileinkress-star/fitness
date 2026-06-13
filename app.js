@@ -9,7 +9,6 @@ const aprilData = {
         steps:  [8400, 7800, 9500, 11200, 8900, 10100, 12300],
         activities: [40, 30, 10, 20],
         weekTxt: '01.04. – 07.04. · Woche 1 von 4',
-        kbWarn:  false,
         mot: 'Top-Start in den April: Schlaf, Schritte, Training – alles im grünen Bereich. Genau so soll es sein.',
         sleep_title: 'Erholung auf höchstem Niveau',
         sleep_copy:  'Jede Nacht über 7 Stunden – dein Körper konnte sich vollständig regenerieren und ist bereit für neue Herausforderungen.',
@@ -20,7 +19,8 @@ const aprilData = {
         act_title:   'Deine Woche im Überblick',
         act_copy:    'Krafttraining als solide Basis, ergänzt durch Gehen für die Alltagsaktivität. Eine ausgewogene Kombination.',
         act_focus:   'Kraft & Gehen',
-        act_who:     'Status: Erfüllt' // Neues Feld für WHO Trainingsstatus
+        act_who:     'Status: Erfüllt',
+        mot_border:  '#7ab7ff'
     },
     2: {
         dates: ['Mo','Di','Mi','Do','Fr','Sa','So'],
@@ -28,7 +28,6 @@ const aprilData = {
         steps:  [7100, 6200, 8500, 13000, 14200, 11000, 8400],
         activities: [50, 10, 20, 20],
         weekTxt: '08.04. – 14.04. · Woche 2 von 4',
-        kbWarn:  true,
         mot: 'Du hast viel geleistet – aber dein Schlaf sagt: kurze Pause einlegen. Wer sich erholt, kommt stärker zurück.',
         sleep_title: 'Schlafdefizit – Körper meldet sich',
         sleep_copy:  'Nur 6 h 08 min im Schnitt. Besonders Mittwoch war kritisch mit nur 5:18 h. Der Körper braucht jetzt Erholung.',
@@ -39,7 +38,8 @@ const aprilData = {
         act_title:   'Hohes Volumen, wenig Erholung',
         act_copy:    'Krafttraining dominiert – kombiniert mit HIIT und wenig Schlaf. Das ist mutig, aber auf Dauer riskant.',
         act_focus:   'Kraft & HIIT',
-        act_who:     'Status: Erfüllt (Aber riskante Belastung)'
+        act_who:     'Status: Erfüllt (Aber riskante Belastung)',
+        mot_border:  '#ff6b6b'
     },
     3: {
         dates: ['Mo','Di','Mi','Do','Fr','Sa','So'],
@@ -47,7 +47,6 @@ const aprilData = {
         steps:  [11200, 9500, 14500, 12300, 8900, 7600, 9100],
         activities: [30, 45, 15, 10],
         weekTxt: '15.04. – 21.04. · Woche 3 von 4',
-        kbWarn:  true,
         mot: 'Du hast dich aufs Rad geschwungen und Kilometer gemacht. Jetzt weißt du: Ausdauer kostet auch Erholung. Der Ausgleich folgt.',
         sleep_title: 'Schlaf instabil – Trend abwärts',
         sleep_copy:  'Gut gestartet, dann sinkend. Die langen Radausfahrten kosten mehr Erholung als gedacht – das ist ganz normal.',
@@ -58,7 +57,8 @@ const aprilData = {
         act_title:   'Gravel übernimmt das Ruder',
         act_copy:    'Fast die Hälfte aller Trainingsminuten auf dem Rad – klares Zeichen für einen starken Ausdauer-Fokus.',
         act_focus:   'Gravel & Kraft',
-        act_who:     'Status: Erfüllt (Fokus Ausdauer)'
+        act_who:     'Status: Erfüllt (Fokus Ausdauer)',
+        mot_border:  '#ff6b6b'
     },
     4: {
         dates: ['Mo','Di','Mi','Do','Fr','Sa','So'],
@@ -66,7 +66,6 @@ const aprilData = {
         steps:  [9200, 8400, 10500, 11800, 13100, 9500, 10200],
         activities: [35, 25, 25, 15],
         weekTxt: '22.04. – 28.04. · Woche 4 von 4',
-        kbWarn:  false,
         mot: 'Was für ein Finale: Schlaf steigt auf 9 Stunden, Schritte konstant, Training ausgewogen. Du hast den April stark beendet – weiter so!',
         sleep_title: 'Perfekte Erholung',
         sleep_copy:  'Schlaf steigt kontinuierlich bis auf 9 Stunden am Freitag. Der Körper hat sich vollständig regeneriert.',
@@ -77,7 +76,8 @@ const aprilData = {
         act_title:   'Ausgewogener Mix',
         act_copy:    'Kraft und HIIT gleichwertig – ein solides Fundament für den Mai. April abgehakt!',
         act_focus:   'Kraft & HIIT',
-        act_who:     'Status: Perfekt erfüllt'
+        act_who:     'Status: Perfekt erfüllt',
+        mot_border:  '#7ab7ff'
     }
 };
 
@@ -87,8 +87,6 @@ const BLUE_L   = 'rgba(122,183,255,0.7)';
 const RED_L    = 'rgba(255,107,107,0.6)';
 const RED_LINE = '#ff6b6b';
 const GRID     = 'rgba(255,255,255,0.04)';
-
-// HIER SIND DIE NEUEN EDLEN BLAU-TÖNE FÜRS RING-DIAGRAMM (Ton-in-Ton mit Primärfarbe)
 const MONOCHROME_BLUES = ['#7ab7ff', '#529af0', '#3076c9', '#1a4e8c'];
 
 const scaleBase = {
@@ -145,7 +143,7 @@ function buildCharts(week) {
             labels: ['Krafttraining 🏋️', 'Gravel 🚴', 'HIIT / Hyrox 🏃', 'Gehen 👟'],
             datasets: [{
                 data: d.activities,
-                backgroundColor: MONOCHROME_BLUES, // <-- Die neuen Blau-Töne
+                backgroundColor: MONOCHROME_BLUES,
                 borderColor: '#080814',
                 borderWidth: 3,
                 hoverOffset: 6
@@ -183,33 +181,36 @@ function updateTexts(week) {
     document.getElementById('activityCopy').textContent    = d.act_copy;
     document.getElementById('val-activity-focus').textContent = d.act_focus;
     
-    // WHO Status Update für Aktivitäten
     document.getElementById('actWhoStatus').innerHTML = `<br><strong style="color:var(--accent-blue);">${d.act_who}</strong>`;
 
     const motBar = document.querySelector('.motivation-bar');
-    motBar.style.borderLeftColor = d.kbWarn ? '#ff6b6b' : '#7ab7ff';
+    motBar.style.borderTopColor = d.mot_border; // Passt die Rahmenfarbe der Motivationsbox an
 
-    // ---- DYNAMISCHE FÜLLUNG FÜR DIE 3 MINI KETTLEBELLS ----
-    const kbSleep = document.getElementById('kbSleepFill');
-    const kbSteps = document.getElementById('kbStepsFill');
-    const kbAct = document.getElementById('kbActFill');
+    // ---- BILDER FÜR DIE KETTLEBELLS UPDATEN ----
+    const imgSleep = document.getElementById('kbImgSleep');
+    const imgSteps = document.getElementById('kbImgSteps');
+    const imgAct = document.getElementById('kbImgAct');
 
+    const daumen = 'kettlebell_daumenhoch.png';
+    const tipp = 'kettlebell.png';
+
+    // Logik: Daumen hoch bei guten Werten, "Tipp/Warnung" (ohne Daumen) bei Schwächen
     if (week === 1) {
-        kbSleep.style.height = '85%'; kbSleep.className = 'kb-fill';
-        kbSteps.style.height = '100%'; kbSteps.className = 'kb-fill';
-        kbAct.style.height = '90%'; kbAct.className = 'kb-fill';
+        imgSleep.src = daumen;
+        imgSteps.src = daumen;
+        imgAct.src = daumen;
     } else if (week === 2) {
-        kbSleep.style.height = '30%'; kbSleep.className = 'kb-fill warning'; // Rot bei wenig Schlaf!
-        kbSteps.style.height = '100%'; kbSteps.className = 'kb-fill';
-        kbAct.style.height = '95%'; kbAct.className = 'kb-fill';
+        imgSleep.src = tipp;     // Schlafmangel!
+        imgSteps.src = daumen;
+        imgAct.src = tipp;       // Risiko durch Übertraining
     } else if (week === 3) {
-        kbSleep.style.height = '50%'; kbSleep.className = 'kb-fill warning';
-        kbSteps.style.height = '100%'; kbSteps.className = 'kb-fill';
-        kbAct.style.height = '100%'; kbAct.className = 'kb-fill';
+        imgSleep.src = tipp;     // Schlaf weiterhin instabil
+        imgSteps.src = daumen;
+        imgAct.src = daumen;     // Ausdauer Fokus ist in Ordnung
     } else {
-        kbSleep.style.height = '95%'; kbSleep.className = 'kb-fill';
-        kbSteps.style.height = '100%'; kbSteps.className = 'kb-fill';
-        kbAct.style.height = '90%'; kbAct.className = 'kb-fill';
+        imgSleep.src = daumen;
+        imgSteps.src = daumen;
+        imgAct.src = daumen;
     }
 }
 
