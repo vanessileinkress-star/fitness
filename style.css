@@ -6,12 +6,7 @@
     --text-muted: #5a5a80;
     --text-soft: #9999bb;
     --accent-blue: #7ab7ff;
-    --accent-cyan: #7adbff;
-    --accent-lavender: #c4b5fd;
-    --pastel-1: #bfdbfe;  /* hellblau */
-    --pastel-2: #a5f3fc;  /* cyan */
-    --pastel-3: #ddd6fe;  /* lavender */
-    --pastel-4: #fbcfe8;  /* pink */
+    --accent-dark: #3d4a6b;
     --who-red: #ff6b6b;
     --border: #12122a;
     --border-glow: #1e1e40;
@@ -29,58 +24,14 @@ body {
 /* ── HEADER ── */
 header {
     text-align: center;
-    padding: 4rem 2rem 3rem;
+    padding: 3rem 2rem 1.5rem;
     border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    top: -60px; left: 50%;
-    transform: translateX(-50%);
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(122,183,255,0.06) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.kettlebell-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    position: relative;
-}
-
-.kettlebell-svg {
-    width: 110px;
-    height: auto;
-    filter: drop-shadow(0 0 18px rgba(122,183,255,0.35));
-    animation: kb-breathe 3s ease-in-out infinite;
-}
-
-@keyframes kb-breathe {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
-.kettlebell-bubble {
-    margin-top: 0.6rem;
-    background: var(--bg-card2);
-    border: 1px solid var(--border-glow);
-    border-radius: 20px;
-    padding: 0.35rem 1rem;
-    font-size: 0.82rem;
-    color: var(--accent-cyan);
-    letter-spacing: 0.3px;
-    transition: all 0.4s ease;
 }
 
 header h1 {
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     color: var(--text);
     margin-bottom: 0.3rem;
@@ -88,48 +39,14 @@ header h1 {
 
 .subtitle {
     color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.5px;
+    font-size: 0.88rem;
 }
-
-.status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 1.2rem;
-    border-radius: 100px;
-    border: 1px solid var(--border-glow);
-    font-size: 0.82rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    transition: all 0.4s ease;
-    background: var(--bg-card);
-}
-
-.status-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent-cyan);
-    box-shadow: 0 0 6px var(--accent-cyan);
-    animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-}
-
-.status-badge.warning { border-color: rgba(255,107,107,0.3); }
-.status-badge.warning .status-dot { background: var(--who-red); box-shadow: 0 0 6px var(--who-red); }
-.status-badge.warning #statusText { color: var(--who-red); }
 
 /* ── CONTROLS ── */
 .controls-container {
     max-width: 480px;
-    margin: 2.5rem auto;
-    padding: 1.5rem 2rem;
+    margin: 2rem auto;
+    padding: 1.3rem 1.8rem;
     border: 1px solid var(--border);
     border-radius: 12px;
     background: var(--bg-card);
@@ -138,12 +55,12 @@ header h1 {
 
 .controls-container label {
     display: block;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 700;
     color: var(--accent-blue);
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.9rem;
 }
 
 .slider {
@@ -153,7 +70,7 @@ header h1 {
     background: var(--border-glow);
     border-radius: 2px;
     outline: none;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
 }
 
 .slider::-webkit-slider-thumb {
@@ -162,7 +79,7 @@ header h1 {
     border-radius: 50%;
     background: var(--accent-blue);
     cursor: pointer;
-    box-shadow: 0 0 8px rgba(122,183,255,0.5);
+    box-shadow: 0 0 8px rgba(122,183,255,0.4);
     transition: transform 0.15s ease;
 }
 
@@ -177,7 +94,34 @@ header h1 {
     letter-spacing: 0.5px;
 }
 
-/* ── MAIN SECTIONS ── */
+/* ── MOTIVATION BAR ── */
+.motivation-bar {
+    max-width: 700px;
+    margin: 0 auto 0;
+    padding: 1rem 1.5rem;
+    border-left: 3px solid var(--accent-blue);
+    background: var(--bg-card);
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 1rem;
+}
+
+.mot-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.mot-text {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    line-height: 1.55;
+    font-style: italic;
+}
+
+/* ── SECTIONS & LAYOUT ── */
 .dashboard-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -188,100 +132,133 @@ header h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4.5rem 0;
+    padding: 4rem 0;
     border-bottom: 1px solid var(--border);
     gap: 4rem;
 }
 
-.dashboard-section.reverse {
-    flex-direction: row-reverse;
-}
+.dashboard-section.reverse { flex-direction: row-reverse; }
 
 .story-text {
     flex: 1;
-    min-width: 280px;
-    max-width: 360px;
+    min-width: 270px;
+    max-width: 380px;
+}
+
+/* Der Container für Überschrift UND Kettlebell */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 0.8rem;
 }
 
 .section-eyebrow {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: var(--accent-blue);
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .story-text h2 {
-    font-size: 1.55rem;
+    font-size: 1.45rem;
     font-weight: 800;
     color: var(--text);
-    margin-bottom: 0.7rem;
     line-height: 1.2;
+    margin: 0;
 }
 
 .story-copy {
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     color: var(--text-soft);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
     line-height: 1.65;
 }
 
-.dashboard-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-}
+.dashboard-grid { display: flex; flex-direction: column; gap: 0.85rem; }
 
 .db-item {
     border-left: 2px solid var(--border-glow);
     padding-left: 0.9rem;
-    transition: border-color 0.3s ease;
 }
 
 .db-item.accent { border-left-color: var(--accent-blue); }
-.db-item.who { border-left-color: var(--who-red); }
+.db-item.who    { border-left-color: var(--who-red); }
 
-.db-label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--text-muted);
-    margin-bottom: 0.15rem;
-}
-
-.db-value {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--text);
-}
-
-.db-desc {
-    font-size: 0.82rem;
-    color: var(--text-soft);
-    line-height: 1.5;
-}
+.db-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 0.1rem; }
+.db-value { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+.db-desc  { font-size: 0.8rem; color: var(--text-soft); line-height: 1.5; }
 
 /* ── CHARTS ── */
 .story-visual {
     flex: 1.4;
     min-width: 0;
     max-width: 540px;
-    height: 260px;
+    height: 250px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 1.2rem;
+    padding: 1.1rem;
+}
+
+.donut-visual { height: 270px; }
+canvas { width: 100% !important; height: 100% !important; }
+
+/* ── DEINE CLEANE KETTLEBELL (Mini-Version) ── */
+.kb-indicator {
     position: relative;
+    width: 46px;
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: 1rem;
 }
 
-.donut-visual {
-    height: 280px;
+.kb-handle {
+    width: 26px;
+    height: 16px;
+    border: 4px solid #333;
+    border-bottom: none;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    box-sizing: border-box;
+    z-index: 1;
 }
 
-canvas {
-    width: 100% !important;
-    height: 100% !important;
+.kb-body {
+    width: 40px;
+    height: 40px;
+    background-color: #0c0c1e;
+    border: 3px solid #333;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    z-index: 2;
+    margin-top: -2px; /* Griff geht nahtlos über */
+}
+
+/* Die Füllung mit dem Cut-Out-Schlitz in der Mitte */
+.kb-fill {
+    width: 100%;
+    background: var(--accent-blue);
+    box-shadow: 0 0 8px rgba(122, 183, 255, 0.4);
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
+    
+    /* Der Schlitz aus deinem Bild */
+    mask: linear-gradient(to bottom, #000 0%, #000 46%, transparent 46%, transparent 54%, #000 54%, #000 100%);
+    -webkit-mask: linear-gradient(to bottom, #000 0%, #000 46%, transparent 46%, transparent 54%, #000 54%, #000 100%);
+}
+
+.kb-fill.warning {
+    background: var(--who-red);
+    box-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
 }
 
 /* ── FOOTER ── */
@@ -289,19 +266,14 @@ footer {
     text-align: center;
     padding: 2rem;
     color: var(--text-muted);
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     border-top: 1px solid var(--border);
-    letter-spacing: 0.3px;
 }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 720px) {
     .dashboard-section,
-    .dashboard-section.reverse {
-        flex-direction: column;
-        gap: 2rem;
-        padding: 3rem 0;
-    }
+    .dashboard-section.reverse { flex-direction: column; gap: 2rem; padding: 3rem 0; }
     .story-text { max-width: 100%; }
     .story-visual { width: 100%; max-width: 100%; }
 }
