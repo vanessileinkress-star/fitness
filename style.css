@@ -1,7 +1,6 @@
 :root {
     --bg: #03030a;
     --bg-card: #080814;
-    --bg-card2: #0c0c1e;
     --text: #f0f0ff;
     --text-muted: #5a5a80;
     --text-soft: #9999bb;
@@ -18,8 +17,10 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
+    overflow-x: hidden; /* Verhindert horizontales Scrollen durch die Kettlebells */
 }
 
+/* ── HEADER ── */
 header {
     text-align: center;
     padding: 3rem 2rem 1.5rem;
@@ -40,6 +41,7 @@ header h1 {
     font-size: 0.88rem;
 }
 
+/* ── CONTROLS & SLIDER ── */
 .controls-container {
     max-width: 480px;
     margin: 2rem auto;
@@ -94,13 +96,13 @@ header h1 {
 /* ── ZENTRIERTE MOTIVATION BAR ── */
 .motivation-bar {
     max-width: 700px;
-    margin: 0 auto 2.5rem auto;
+    margin: 0 auto 3rem auto; /* Mittig zentriert */
     padding: 1.5rem;
-    border-top: 3px solid var(--accent-blue); /* Symmetrische Linie oben statt links */
+    border-top: 3px solid var(--accent-blue); /* Linie oben statt links */
     background: var(--bg-card);
     border-radius: 12px;
-    text-align: center; /* Alles mittig */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    text-align: center; /* Text mittig */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .mot-label {
@@ -143,11 +145,13 @@ header h1 {
     max-width: 380px;
 }
 
+/* ── SECTION HEADER & FREISCHWEBENDE KETTLEBELL ── */
 .section-header {
+    position: relative; /* WICHTIG: Ankerpunkt für die freischwebende Kettlebell */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.8rem;
+    flex-direction: column; 
+    align-items: flex-start;
+    margin-bottom: 1rem;
 }
 
 .section-eyebrow {
@@ -167,6 +171,30 @@ header h1 {
     margin: 0;
 }
 
+/* DIE KETTLEBELL BILDER (Freischwebend in der Lücke) */
+.kb-mascot {
+    position: absolute;
+    right: -130px; /* Schiebt die Kettlebell in die rechte Lücke */
+    top: -15px;    
+    width: 95px;   /* Schön groß, wie gewünscht */
+    height: auto;
+    z-index: 10;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Die mittlere Sektion (Schritte) ist spiegelverkehrt! */
+.dashboard-section.reverse .kb-mascot {
+    right: auto;
+    left: -130px; /* Schiebt die Kettlebell in die linke Lücke */
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ── TEXT & DATEN GRID ── */
 .story-copy {
     font-size: 0.86rem;
     color: var(--text-soft);
@@ -188,6 +216,7 @@ header h1 {
 .db-value { font-size: 1.1rem; font-weight: 700; color: var(--text); }
 .db-desc  { font-size: 0.8rem; color: var(--text-soft); line-height: 1.5; }
 
+/* ── CHARTS ── */
 .story-visual {
     flex: 1.4;
     min-width: 0;
@@ -202,22 +231,7 @@ header h1 {
 .donut-visual { height: 270px; }
 canvas { width: 100% !important; height: 100% !important; }
 
-
-/* ── DEINE PNG KETTLEBELLS ── */
-.kb-mascot {
-    width: 140px;         /* Hier die Größe angepasst (vorher 70px) */
-    height: auto;
-    margin-left: 1.5rem; /* Etwas mehr Abstand zum Text */
-    flex-shrink: 0;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
-    100% { transform: translateY(0px); }
-}
-
+/* ── FOOTER ── */
 footer {
     text-align: center;
     padding: 2rem;
@@ -226,9 +240,19 @@ footer {
     border-top: 1px solid var(--border);
 }
 
+/* ── RESPONSIVE FÜR HANDY & TABLET ── */
+@media (max-width: 900px) {
+    .kb-mascot { right: -60px; width: 80px; }
+    .dashboard-section.reverse .kb-mascot { left: -60px; }
+}
+
 @media (max-width: 720px) {
     .dashboard-section,
     .dashboard-section.reverse { flex-direction: column; gap: 2rem; padding: 3rem 0; }
     .story-text { max-width: 100%; }
     .story-visual { width: 100%; max-width: 100%; }
+    
+    /* Holt die Kettlebell auf dem Handy wieder ins normale Layout zurück */
+    .section-header { flex-direction: row; justify-content: space-between; align-items: center; }
+    .kb-mascot { position: relative; right: 0; left: 0 !important; top: 0; width: 75px; }
 }
