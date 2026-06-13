@@ -233,9 +233,10 @@ footer {
     border-top: 1px solid var(--border);
 }
 
+
 /* ── RESPONSIVE FÜR HANDY & TABLET ── */
 @media (max-width: 900px) {
-    .kb-mascot { right: -60px; width: 80px; }
+    .kb-mascot { right: -60px; width: 80px; } /* HIER überschreibt er deine 120px! */
 }
 
 @media (max-width: 720px) {
