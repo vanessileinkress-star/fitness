@@ -87,12 +87,13 @@ const BLUE_L   = 'rgba(122,183,255,0.7)';
 const RED_L    = 'rgba(255,107,107,0.6)';
 const RED_LINE = '#ff6b6b';
 const GRID     = 'rgba(255,255,255,0.04)';
-// Neue, kontrastreiche Tech-Pastell-Palette für perfekte Lesbarkeit
+
+// NEUE KONTRAST-FARBEN FÜR DAS RING-DIAGRAMM (bessere Lesbarkeit)
 const ACTIVITY_COLORS = [
-    '#7ab7ff', // Krafttraining: Dein primäres Hellblau
-    '#b388ff', // Gravel: Ein edles Pastell-Lila
-    '#7adbff', // HIIT: Ein klares, leuchtendes Cyan
-    '#ffb7b2'  // Gehen: Ein weiches Pastell-Koralle (als warmer Kontrast)
+    '#7ab7ff', // Krafttraining: Primär Hellblau
+    '#b388ff', // Gravel: Pastell-Lila
+    '#7adbff', // HIIT: Cyan
+    '#ffb7b2'  // Gehen: Pastell-Koralle
 ];
 
 const scaleBase = {
@@ -143,14 +144,13 @@ function buildCharts(week) {
     });
 
     // Aktivitäten Donut Chart
-// Aktivitäten Donut Chart
     chartActivity = new Chart(document.getElementById('activityChart').getContext('2d'), {
         type: 'doughnut',
         data: {
             labels: ['Krafttraining 🏋️', 'Gravel 🚴', 'HIIT / Hyrox 🏃', 'Gehen 👟'],
             datasets: [{
                 data: d.activities,
-                backgroundColor: ACTIVITY_COLORS, // <-- HIER den neuen Namen eintragen
+                backgroundColor: ACTIVITY_COLORS,
                 borderColor: '#080814',
                 borderWidth: 3,
                 hoverOffset: 6
@@ -163,9 +163,6 @@ function buildCharts(week) {
             animation: { duration: 320 },
             plugins: {
                 legend: { position: 'right', labels: { color: '#9999bb', font: { size: 11 }, boxWidth: 11, padding: 14, usePointStyle: true } }
-            }
-        }
-    });
             }
         }
     });
@@ -191,20 +188,23 @@ function updateTexts(week) {
     document.getElementById('activityCopy').textContent    = d.act_copy;
     document.getElementById('val-activity-focus').textContent = d.act_focus;
     
+    // WHO Status Update für Aktivitäten
     document.getElementById('actWhoStatus').innerHTML = `<br><strong style="color:var(--accent-blue);">${d.act_who}</strong>`;
 
+    // Motivationsbalken Farbe
     const motBar = document.querySelector('.motivation-bar');
-    motBar.style.borderTopColor = d.mot_border; // Passt die Rahmenfarbe der Motivationsbox an
+    motBar.style.borderTopColor = d.mot_border;
 
     // ---- BILDER FÜR DIE KETTLEBELLS UPDATEN ----
     const imgSleep = document.getElementById('kbImgSleep');
     const imgSteps = document.getElementById('kbImgSteps');
     const imgAct = document.getElementById('kbImgAct');
 
+    // Dateinamen der hochgeladenen Bilder
     const daumen = 'kettlebell_daumenhoch.png';
     const tipp = 'kettlebell.png';
 
-    // Logik: Daumen hoch bei guten Werten, "Tipp/Warnung" (ohne Daumen) bei Schwächen
+    // Bild-Logik: Je nach Woche ändern sich die Grafiken neben den Blöcken
     if (week === 1) {
         imgSleep.src = daumen;
         imgSteps.src = daumen;
@@ -216,7 +216,7 @@ function updateTexts(week) {
     } else if (week === 3) {
         imgSleep.src = tipp;     // Schlaf weiterhin instabil
         imgSteps.src = daumen;
-        imgAct.src = daumen;     // Ausdauer Fokus ist in Ordnung
+        imgAct.src = daumen;     
     } else {
         imgSleep.src = daumen;
         imgSteps.src = daumen;
