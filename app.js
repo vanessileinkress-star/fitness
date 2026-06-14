@@ -117,7 +117,7 @@ function buildCharts(week) {
         }
     };
 
-    // Schlaf Chart (JETZT MIT WHO-ZONE)
+   // Schlaf Chart (Zwei gestrichelte Linien mit Füllung dazwischen)
     chartSleep = new Chart(document.getElementById('sleepChart').getContext('2d'), {
         type: 'bar',
         data: {
@@ -129,15 +129,17 @@ function buildCharts(week) {
                     borderRadius: 4 
                 },
                 { 
-                    /* Die obere Grenze (9 Stunden) - unsichtbare Linie */
+                    /* Obere Grenze: 9 Stunden (gestrichelt) */
                     data: Array(7).fill(9), 
                     type: 'line', 
-                    borderColor: 'transparent', 
+                    borderColor: RED_LINE, 
+                    borderWidth: 1.5, 
+                    borderDash: [5, 3], 
                     pointRadius: 0, 
                     fill: false 
                 },
                 { 
-                    /* Die untere Grenze (7 Stunden) - rote gestrichelte Linie + Füllung nach oben */
+                    /* Untere Grenze: 7 Stunden (gestrichelt) + Füllung zur 9h-Linie */
                     data: Array(7).fill(7), 
                     type: 'line', 
                     borderColor: RED_LINE, 
@@ -145,7 +147,7 @@ function buildCharts(week) {
                     borderDash: [5, 3], 
                     pointRadius: 0, 
                     fill: '-1', /* Füllt den Bereich bis zur vorherigen Datenreihe (9h) */
-                    backgroundColor: 'rgba(255, 107, 107, 0.12)' /* Leichter roter Hintergrund */
+                    backgroundColor: 'rgba(255, 107, 107, 0.15)' /* Transparentes Rot */
                 }
             ]
         },
