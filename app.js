@@ -117,14 +117,36 @@ function buildCharts(week) {
         }
     };
 
-    // Schlaf Chart
+    // Schlaf Chart (JETZT MIT WHO-ZONE)
     chartSleep = new Chart(document.getElementById('sleepChart').getContext('2d'), {
         type: 'bar',
         data: {
             labels: d.dates,
             datasets: [
-                { data: d.sleep, backgroundColor: d.sleep.map(v => v >= 7 ? BLUE_L : RED_L), borderRadius: 4 },
-                { data: Array(7).fill(7), type: 'line', borderColor: RED_LINE, borderWidth: 1.5, borderDash: [5, 3], pointRadius: 0, fill: false }
+                { 
+                    data: d.sleep, 
+                    backgroundColor: d.sleep.map(v => v >= 7 ? BLUE_L : RED_L), 
+                    borderRadius: 4 
+                },
+                { 
+                    /* Die obere Grenze (9 Stunden) - unsichtbare Linie */
+                    data: Array(7).fill(9), 
+                    type: 'line', 
+                    borderColor: 'transparent', 
+                    pointRadius: 0, 
+                    fill: false 
+                },
+                { 
+                    /* Die untere Grenze (7 Stunden) - rote gestrichelte Linie + Füllung nach oben */
+                    data: Array(7).fill(7), 
+                    type: 'line', 
+                    borderColor: RED_LINE, 
+                    borderWidth: 1.5, 
+                    borderDash: [5, 3], 
+                    pointRadius: 0, 
+                    fill: '-1', /* Füllt den Bereich bis zur vorherigen Datenreihe (9h) */
+                    backgroundColor: 'rgba(255, 107, 107, 0.12)' /* Leichter roter Hintergrund */
+                }
             ]
         },
         options: { ...base, scales: { ...base.scales, y: { ...scaleBase, min: 0, max: 11, ticks: { ...scaleBase.ticks, callback: v => v + 'h' } } } }
@@ -167,7 +189,6 @@ function buildCharts(week) {
         }
     });
 }
-
 function updateTexts(week) {
     const d = aprilData[week];
 
